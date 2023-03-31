@@ -5,7 +5,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 {
     //[field:] serve pra deixar variaveis que tem esse { get; set; } no final, visiveis no editor;
     [field:SerializeField] public float CurrentHealth { get; set; }
-    [field: SerializeField] public float MaxHealth { get; set; }
+    [field:SerializeField] public float MaxHealth { get; set; }
     public bool IsDie { get ; set ; }
 
     //diz que esse carinha alterou a vida (dano ou cura), e passa a vida atual
@@ -16,8 +16,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public event Action OnHeal;
 
     [SerializeField] private bool destroyOnDie;
-
     [SerializeField] private int enemyXp;
+
     public Collider2D collider2d;
 
     private Animator anim;
@@ -26,8 +26,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     {
         anim = GetComponent<Animator>();
         collider2d = GetComponent<Collider2D>();
-        /*if (gameObject.CompareTag("Player"))
-            CurrentHealth = TreeController.Instance.CurrentHealth;*/
+
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth);
     }
 
@@ -59,34 +58,22 @@ public class HealthSystem : MonoBehaviour, IDamageable
         OnTakeDamage?.Invoke(direction);
     }
 
-
-
     public void Die()
     {
         if (IsDie)
             return;
         IsDie = true;
         collider2d.enabled = false;
-        TreeController.Instance.SetAddXp(enemyXp);
         OnDie?.Invoke(this);
 
 
         if (destroyOnDie)
         {
-        }//evita que o player seja destruido
-         //gameObject.SetActive(false);
-
-        if (this.gameObject.name == "EnemyPerto(Clone)")
-        {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Cogumelo/Cogumelo Explosion", GetComponent<Transform>().position);
+            Destroy(gameObject);
         }
-        if (this.gameObject.name == "EnemyTiro(Clone)")
+        else
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Cogumelo/Cogumelo Explosion", GetComponent<Transform>().position);
-        }
-        if (this.gameObject.name == "Kamikaze(Clone)")
-        {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Kamikaze/Kamikaze Explosion", GetComponent<Transform>().position);
+            gameObject.SetActive(false);
         }
     }
 
@@ -94,8 +81,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
     {
         gameObject.SetActive(false);
     }
-
-
 
     /// <summary>
     /// Para curar

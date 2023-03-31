@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -68,13 +67,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         main = Camera.main;
-
-        //health.OnTakeDamage += Stun;
-    }
-
-    private void OnDestroy()
-    {
-        //health.OnTakeDamage -= Stun;
     }
 
     private void Stun(Vector3 direction)
@@ -99,7 +91,7 @@ public class PlayerController : MonoBehaviour
         if (health.IsDie)
             return;
 
-        if (_inputReference.PauseButton.IsPressed && PowerUpController.Instance.m_start.PainelStart.activeSelf == false)
+        if (_inputReference.PauseButton.IsPressed)
         {
             //Preguica :)
             Debug.Log("Pause");
