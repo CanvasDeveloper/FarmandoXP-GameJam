@@ -111,9 +111,9 @@ TextureImporter:
         x: 0
         y: 0
         width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -132,58 +132,16 @@ TextureImporter:
         x: 32
         y: 0
         width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdd5b6cf16fd1a748a58ed01b55ddd84
-      internalID: -325237151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba17d76cbd617a847ab6912f1288e650
-      internalID: 1724814150
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cerca_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c01eba84104dc2d4281056efed3ea542
-      internalID: 1380429793
+      spriteID: d9ee4f81a2af9934fbd99aceb58e3cc2
+      internalID: -1932941773
       vertices: []
       indices: 
       edges: []
@@ -200,9 +158,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       cerca_0: 484311391
-      cerca_1: -325237151
-      cerca_2: 1724814150
-      cerca_3: 1380429793
+      cerca_1: -1932941773
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
