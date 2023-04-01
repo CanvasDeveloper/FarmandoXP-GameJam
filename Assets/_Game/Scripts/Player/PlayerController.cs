@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int maxBullets = 10;
     [SerializeField] public float delayToReload = 0.2f;
 
-    private int _currentBullets = 0;
+    [SerializeField] private int currentBullets = 0;
+
     private bool _isCanShoot = true;
     private bool _isDashing = false;
     
@@ -65,7 +66,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _currentBullets = maxBullets;
+        currentBullets = maxBullets;
+        
         UpdateToSide();
     }
 
@@ -147,12 +149,12 @@ public class PlayerController : MonoBehaviour
     }
     private void ShootInputTrigger()
     {
-        if (_inputReference.ShootButton.IsPressed && _currentBullets > 0)
+        if (_inputReference.ShootButton.IsPressed && currentBullets > 0)
         {
             if (!_isCanShoot)
                 return;
 
-            _currentBullets--;
+            currentBullets--;
             StartCoroutine(IE_CanShoot());
 
             playerAnimator.SetTrigger(AttackParam);
@@ -195,11 +197,11 @@ public class PlayerController : MonoBehaviour
 
     public void AddBullets(int count)
     {
-        _currentBullets += count;
+        currentBullets += count;
 
-        if(_currentBullets >= maxBullets)
+        if(currentBullets >= maxBullets)
         {
-            _currentBullets = maxBullets;
+            currentBullets = maxBullets;
         }
     }
 
