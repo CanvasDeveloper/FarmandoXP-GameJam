@@ -14,6 +14,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
     public event Action OnHeal;
 
     [SerializeField] private bool destroyOnDie;
+    [SerializeField] private bool disableOnDie;
 
     private void Start()
     {
@@ -48,7 +49,7 @@ public class HealthSystem : MonoBehaviour, IDamageable
 
         if (destroyOnDie)
             Destroy(gameObject);
-        else
+        else if(disableOnDie)
             gameObject.SetActive(false);
     }
 

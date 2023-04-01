@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Data;
 using UnityEngine;
 
 [Serializable]
@@ -18,17 +17,20 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsWalkParam = Animator.StringToHash("isWalk");
     private static readonly int IsDieParam = Animator.StringToHash("isDie");
     private static readonly int TakeDamageParam = Animator.StringToHash("takeDamage");
+    private static readonly int DirectionXParam = Animator.StringToHash("directionX");
+    private static readonly int DirectionYParam = Animator.StringToHash("directionY");
 
     [Header("Player")]
-    [SerializeField] private Animator animatorPlayer;
+    [SerializeField] private Animator playerAnimator;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private bool isLookingLeft;
+    
+    //[SerializeField] private bool isLookingLeft;
 
     [Header("Rotate Sprites")]
     [SerializeField] private SpriteRotationHandler playerSpriteRotation;
 
     [Header("Bullets")]
-    public GameObject bulletPrefab;
+    public BulletController bulletPrefab;
 
     [SerializeField] private Transform gunPivot;
     [SerializeField] private float bulletSpeed = 5f;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     
     private Camera _main;
     private Vector3 _mouseWorldPosition;
+    private Vector2 _targetDirection;
 
     private InputReference _inputReference;
     private Rigidbody2D _rigidbody2D;
@@ -57,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _main = Camera.main;
+        _currentBullets = maxBullets;
     }
 
     private void OnEnable()
@@ -69,55 +73,89 @@ public class PlayerController : MonoBehaviour
     {
         _health.OnTakeDamage -= ChangeToTakeDamageAnimation;
         _health.OnDie -= ChangeToDieAnimation;
-    }
-
-    private void ChangeToDieAnimation(IDamageable value)
-    {
-        animatorPlayer.SetBool(IsDieParam, true);
-    }
-
-    private void ChangeToTakeDamageAnimation(Vector3 value)
-    {
-        animatorPlayer.SetTrigger(TakeDamageParam);
-    }
+    }    
 
     private void Update()
     {
         if (_health.IsDie)
             return;
 
-        if (_inputReference.PauseButton.IsPressed)
-        {
-            GameManager.Instance.PauseResume();
-        }
+        PauseInputTrigger();
 
         if (GameManager.Instance && GameManager.Instance.Paused)
             return;
 
         _mouseWorldPosition = _main.ScreenToWorldPoint(_inputReference.MousePosition);
+        _targetDirection = _inputReference.Movement;
 
-        UpdatePlayerRotation();
-        UpdateSpriteSide();
+        ShootInputTrigger();
 
-        if (_inputReference.ShootButton.IsPressed && _currentBullets > 0)
-        {
-            if (!_isCanShoot)
-                return;
+        UpdateAnimator();
 
-            StartCoroutine(IE_CanShoot());
+        if (!IsMoving())
+            return;
 
-            animatorPlayer.SetTrigger(AttackParam);
-        }
+        UpdateGunRotation();
+        UpdatePlayerScale();
     }
-    
+
     private void FixedUpdate()
     {
         if (_health.IsDie)
             return;
 
-        _rigidbody2D.velocity = _inputReference.Movement * moveSpeed;
+        _rigidbody2D.velocity = _targetDirection * moveSpeed;
+    }
 
-        animatorPlayer.SetBool(IsWalkParam, _rigidbody2D.velocity != new Vector2(0, 0));
+    private bool IsMoving() => _targetDirection != Vector2.zero;
+
+    private void UpdatePlayerScale()
+    {
+        transform.localScale = new Vector3(Mathf.Sign(_targetDirection.x), 1, 1).normalized;
+    }
+
+    private void UpdateGunRotation()
+    {
+        gunPivot.up = _targetDirection;
+
+        //float angle = Mathf.Atan2(_targetDirection.y, _targetDirection.x) * Mathf.Rad2Deg;
+        //gunPivot.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+    }
+
+    private void PauseInputTrigger()
+    {
+        if (_inputReference.PauseButton.IsPressed)
+        {
+            GameManager.Instance.PauseResume();
+        }
+    }
+
+    private void ShootInputTrigger()
+    {
+        if (_inputReference.ShootButton.IsPressed && _currentBullets > 0)
+        {
+            if (!_isCanShoot)
+                return;
+
+            _currentBullets--;
+            StartCoroutine(IE_CanShoot());
+
+            playerAnimator.SetTrigger(AttackParam);
+        }
+    }
+
+    private IEnumerator IE_CanShoot()
+    {
+        _isCanShoot = false;
+
+        BulletController bullet = Instantiate(bulletPrefab, gunPivot.position, gunPivot.rotation);
+        bullet.speedBullet = bulletSpeed;
+        bullet.transform.up = gunPivot.up;
+
+        yield return new WaitForSeconds(delayToReload);
+        
+
+        _isCanShoot = true;
     }
 
     public void AddBullets(int count)
@@ -130,42 +168,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Rotaciona o player
-    /// </summary>
-    private void UpdatePlayerRotation()
+    private void ChangeToDieAnimation(IDamageable value)
     {
-        Vector3 targetDirection = _mouseWorldPosition - transform.position;
-        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-
-        gunPivot.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        playerAnimator.SetBool(IsDieParam, true);
     }
 
-    /// <summary>
-    /// Flipa a arma e o player
-    /// </summary>
-    private void UpdateSpriteSide()
+    private void ChangeToTakeDamageAnimation(Vector3 value)
     {
+        playerAnimator.SetTrigger(TakeDamageParam);
+    }
+
+    private void UpdateAnimator()
+    {
+        playerAnimator.SetBool(IsWalkParam, _rigidbody2D.velocity != new Vector2(0, 0));
+
+        if (!IsMoving())
+            return;
+
+        playerAnimator.SetFloat(DirectionXParam, _targetDirection.x);
+        playerAnimator.SetFloat(DirectionYParam, _targetDirection.y);
+
         //olhando para esquerda, mouse na direita
-        if (isLookingLeft && _mouseWorldPosition.x > transform.position.x)
-        {
-            isLookingLeft = false;
-            playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.startRotation);
-        }
+        //if (isLookingLeft && _mouseWorldPosition.x > transform.position.x)
+        //{
+        //    isLookingLeft = false;
+        //    playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.startRotation);
+        //}
 
-        if(!isLookingLeft && _mouseWorldPosition.x < transform.position.x)
-        {
-            isLookingLeft = true;
-            playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.targetRotation);
-        }
-    }
-
-    private IEnumerator IE_CanShoot()
-    {
-        _isCanShoot = false;
-
-        yield return new WaitForSeconds(delayToReload);
-        
-        _isCanShoot = true;
+        //if(!isLookingLeft && _mouseWorldPosition.x < transform.position.x)
+        //{
+        //    isLookingLeft = true;
+        //    playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.targetRotation);
+        //}
     }
 }

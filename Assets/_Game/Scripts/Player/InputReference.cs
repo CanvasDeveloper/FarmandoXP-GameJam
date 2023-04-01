@@ -8,9 +8,6 @@ using UnityEngine;
 public class InputButton
 {
     public bool IsPressed;
-
- 
-
 }
 
 /// <summary>
@@ -34,36 +31,6 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         playerInputs.Enable();
     }
 
-    private void Update()
-    {
-        //Old input
-        //UpdateMovementValue();
-        //UpdatePauseValue();
-    }
-
-    #region OLD INPUT
-    private void UpdateMovementValue()
-    {
-        var inputX = Input.GetAxisRaw("Horizontal");
-        var inputY = Input.GetAxisRaw("Vertical");
-
-        Movement = new Vector2(inputX, inputY).normalized;
-    }
-
-    private void UpdatePauseValue()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-        {
-            PauseButton.IsPressed = true;
-            StartCoroutine(ResetButton(PauseButton));
-        }
-
-        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.P))
-            PauseButton.IsPressed = false;
-    }
-    #endregion
-   
-
     public void OnMousePosition(InputAction.CallbackContext context)
     {
         var input = context.ReadValue<Vector2>();
@@ -80,7 +47,6 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
     public void OnShoot(InputAction.CallbackContext context)
     {
         ShootButton.IsPressed = context.ReadValueAsButton();
-        //StartCoroutine(ResetButton(ShootButton));
     }
 
     public void OnPause(InputAction.CallbackContext context)
