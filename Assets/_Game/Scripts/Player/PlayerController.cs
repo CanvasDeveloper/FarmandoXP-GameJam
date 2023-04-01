@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePlayerScale()
     {
-        transform.localScale = new Vector3(Mathf.Sign(_targetDirection.x), 1, 1).normalized;
+        transform.localScale = new Vector3(Mathf.Sign(_targetDirection.x), 1, 1);
     }
 
     private void UpdateGunRotation()
