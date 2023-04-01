@@ -4,7 +4,7 @@ using System;
 public class GameManager : Singleton<GameManager>
 {
     public event Action<bool> OnPauseStatusChange;
-    public event Action OnDead;
+    public event Action OnGameOver;
     public event Action OnGameWin;
     public bool Paused { get; private set; }
 
@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
         Paused = true;
         Time.timeScale = 0;
         OnPauseStatusChange?.Invoke(Paused);
-        OnDead?.Invoke();
+        OnGameOver?.Invoke();
     }
 
     public void PauseResume()
