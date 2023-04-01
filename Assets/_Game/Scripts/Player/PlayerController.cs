@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Data;
 using UnityEngine;
 
 [Serializable]
@@ -10,131 +11,123 @@ public class SpriteRotationHandler
     public Vector3 targetRotation;
 }
 
-[RequireComponent(typeof(InputReference))]
+[RequireComponent(typeof(InputReference), typeof(HealthSystem))]
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int AttackParam = Animator.StringToHash("attack");
+    private static readonly int IsWalkParam = Animator.StringToHash("isWalk");
+    private static readonly int IsDieParam = Animator.StringToHash("isDie");
+    private static readonly int TakeDamageParam = Animator.StringToHash("takeDamage");
 
-    [Header("Player Status")]
-    public GameObject patrono;
-    public int playerLevel = 1;
-    public float moveSpeed = 5f;
-
-
+    [Header("Player")]
+    [SerializeField] private Animator animatorPlayer;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private bool isLookingLeft;
 
     [Header("Rotate Sprites")]
     [SerializeField] private SpriteRotationHandler playerSpriteRotation;
-    [SerializeField] private SpriteRotationHandler gunSpriteRotation;
-
 
     [Header("Bullets")]
-    //Para fins de teste
     public GameObject bulletPrefab;
-    public Transform[] bulletPoisiton;
+
     [SerializeField] private Transform gunPivot;
+    [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private int maxBullets = 10;
+    [SerializeField] public float delayToReload = 0.2f;
 
-    //Ambos ainda colocados aqui para registro de variaveis
-    public float bulletSpeed = 5f;
-    public float BulletDamage = 5f;
-    [SerializeField] private float reloadWeapon = 5f;
-    [SerializeField] public float delayWeapon = 5f;
-
-    private bool isCanShoot = true;
-    private Camera main;
-
-    private Vector3 mouseWorldPosition;
-    [SerializeField] private bool isLookingLeft;
+    private int _currentBullets;
+    private bool _isCanShoot = true;
+    
+    private Camera _main;
+    private Vector3 _mouseWorldPosition;
 
     private InputReference _inputReference;
     private Rigidbody2D _rigidbody2D;
 
-    private IDamageable health;
-
-    public Animator player;
-    public Animator gun;
-
-    [SerializeField] private bool isStunned;
-    [SerializeField] private float stunnedTime = 1;
-    [SerializeField] private float stunForce = 15;
+    private IDamageable _health;
 
     private void Awake()
     {
         _inputReference = GetComponent<InputReference>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
-        health = GetComponent<IDamageable>();
+        _health = GetComponent<IDamageable>();
     }
 
     private void Start()
     {
-        main = Camera.main;
+        _main = Camera.main;
     }
 
-    private void Stun(Vector3 direction)
+    private void OnEnable()
     {
-        //isStunned = true;
-
-        var dir = transform.position - direction;
-
-        _rigidbody2D.AddForce(dir.normalized * stunForce);
-
-        StartCoroutine(IE_Stun());
+        _health.OnTakeDamage += ChangeToTakeDamageAnimation;
+        _health.OnDie += ChangeToDieAnimation;
     }
 
-    private IEnumerator IE_Stun()
+    private void OnDisable()
     {
-        yield return new WaitForSeconds(stunnedTime);
+        _health.OnTakeDamage -= ChangeToTakeDamageAnimation;
+        _health.OnDie -= ChangeToDieAnimation;
+    }
 
+    private void ChangeToDieAnimation(IDamageable value)
+    {
+        animatorPlayer.SetBool(IsDieParam, true);
+    }
+
+    private void ChangeToTakeDamageAnimation(Vector3 value)
+    {
+        animatorPlayer.SetTrigger(TakeDamageParam);
     }
 
     private void Update()
     {
-        if (health.IsDie)
+        if (_health.IsDie)
             return;
 
         if (_inputReference.PauseButton.IsPressed)
         {
-            //Preguica :)
-            Debug.Log("Pause");
             GameManager.Instance.PauseResume();
         }
 
         if (GameManager.Instance && GameManager.Instance.Paused)
             return;
 
-        if (isStunned)
-            return;
-
-        mouseWorldPosition = main.ScreenToWorldPoint(_inputReference.MousePosition);
+        _mouseWorldPosition = _main.ScreenToWorldPoint(_inputReference.MousePosition);
 
         UpdatePlayerRotation();
         UpdateSpriteSide();
 
-        if (_inputReference.ShootButton.IsPressed)
+        if (_inputReference.ShootButton.IsPressed && _currentBullets > 0)
         {
-            if (!isCanShoot)
+            if (!_isCanShoot)
                 return;
-           
 
-            Debug.Log("apertou mouse");
             StartCoroutine(IE_CanShoot());
-            gun.SetTrigger("attack");
+
+            animatorPlayer.SetTrigger(AttackParam);
         }
     }
     
     private void FixedUpdate()
     {
-        if (isStunned || health.IsDie)
+        if (_health.IsDie)
             return;
 
         _rigidbody2D.velocity = _inputReference.Movement * moveSpeed;
-        if(_rigidbody2D.velocity !=  new Vector2(0,0))
+
+        animatorPlayer.SetBool(IsWalkParam, _rigidbody2D.velocity != new Vector2(0, 0));
+    }
+
+    public void AddBullets(int count)
+    {
+        _currentBullets += count;
+
+        if(_currentBullets >= maxBullets)
         {
-            player.SetBool("isWalk", true);
+            _currentBullets = maxBullets;
         }
-        else
-        {
-            player.SetBool("isWalk", false);
-        } 
     }
 
     /// <summary>
@@ -142,8 +135,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdatePlayerRotation()
     {
-        Vector3 targetDirection = mouseWorldPosition - transform.position;
+        Vector3 targetDirection = _mouseWorldPosition - transform.position;
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+
         gunPivot.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
 
@@ -153,25 +147,25 @@ public class PlayerController : MonoBehaviour
     private void UpdateSpriteSide()
     {
         //olhando para esquerda, mouse na direita
-        if (isLookingLeft && mouseWorldPosition.x > transform.position.x)
+        if (isLookingLeft && _mouseWorldPosition.x > transform.position.x)
         {
             isLookingLeft = false;
             playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.startRotation);
-            gunSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(gunSpriteRotation.startRotation);
         }
 
-        if(!isLookingLeft && mouseWorldPosition.x < transform.position.x)
+        if(!isLookingLeft && _mouseWorldPosition.x < transform.position.x)
         {
             isLookingLeft = true;
             playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.targetRotation);
-            gunSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(gunSpriteRotation.targetRotation);
         }
     }
 
     private IEnumerator IE_CanShoot()
     {
-        isCanShoot = false;
-        yield return new WaitForSeconds(reloadWeapon);
-        isCanShoot = true;
+        _isCanShoot = false;
+
+        yield return new WaitForSeconds(delayToReload);
+        
+        _isCanShoot = true;
     }
 }

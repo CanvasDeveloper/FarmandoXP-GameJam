@@ -3,43 +3,24 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour, IDamageable
 {
-    //[field:] serve pra deixar variaveis que tem esse { get; set; } no final, visiveis no editor;
-    [field:SerializeField] public float CurrentHealth { get; set; }
-    [field:SerializeField] public float MaxHealth { get; set; }
+    [field: SerializeField] public float MaxHealth { get; set; }
+
+    public float CurrentHealth { get; set; }
     public bool IsDie { get ; set ; }
 
-    //diz que esse carinha alterou a vida (dano ou cura), e passa a vida atual
     public event Action<float, float> OnChangeHealth;
-    //avisa que o gameObject foi morto
     public event Action<IDamageable> OnDie;
     public event Action<Vector3> OnTakeDamage;
     public event Action OnHeal;
 
     [SerializeField] private bool destroyOnDie;
-    [SerializeField] private int enemyXp;
-
-    public Collider2D collider2d;
-
-    private Animator anim;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
-        collider2d = GetComponent<Collider2D>();
-
+        CurrentHealth = MaxHealth;
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth);
     }
 
-    private void OnEnable()
-    {
-        CurrentHealth = MaxHealth;
-        collider2d.enabled = true;
-    }
-
-    /// <summary>
-    /// Tomar dano
-    /// </summary>
-    /// <param name="damage">dano</param>
     public void TakeDamage(Vector3 direction, float damage)
     {
         if (damage <= 0)
@@ -50,7 +31,6 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (CurrentHealth < 0)
         {
             Die();
-            anim.SetBool("isDie", true);
             return;
         }
 
@@ -63,29 +43,15 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (IsDie)
             return;
         IsDie = true;
-        collider2d.enabled = false;
         OnDie?.Invoke(this);
 
 
         if (destroyOnDie)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             gameObject.SetActive(false);
-        }
     }
 
-    public void SetDieAnimation()
-    {
-        gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// Para curar
-    /// </summary>
-    /// <param name="amount">quantidade</param>
     public void Heal(float amount)
     {
         if (amount <= 0)
