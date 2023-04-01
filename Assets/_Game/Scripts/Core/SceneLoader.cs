@@ -61,7 +61,6 @@ public class SceneLoader : Singleton<SceneLoader>
         yield return new WaitForEndOfFrame();
         yield return new WaitUntil(() => operation.isDone);
         yield return new WaitForEndOfFrame();
-
  
         animator.SetTrigger(FadeOutParam);
 
