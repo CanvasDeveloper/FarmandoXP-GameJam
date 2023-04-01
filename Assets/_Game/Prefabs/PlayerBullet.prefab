@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6830665838438061981}
   - component: {fileID: 6830665838438061980}
   - component: {fileID: -4680066072051886476}
+  - component: {fileID: 2981346980671374385}
   m_Layer: 8
   m_Name: PlayerBullet
   m_TagString: Untagged
@@ -116,3 +117,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedBullet: 4
   lifeTime: 4
+--- !u!114 &2981346980671374385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830665838438061983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3362429a0cec149931a1658a10f67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

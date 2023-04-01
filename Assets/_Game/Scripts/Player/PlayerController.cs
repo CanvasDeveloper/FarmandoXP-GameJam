@@ -17,31 +17,37 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsWalkParam = Animator.StringToHash("isWalk");
     private static readonly int IsDieParam = Animator.StringToHash("isDie");
     private static readonly int TakeDamageParam = Animator.StringToHash("takeDamage");
+    private static readonly int DashParam = Animator.StringToHash("dash");
     private static readonly int DirectionXParam = Animator.StringToHash("directionX");
     private static readonly int DirectionYParam = Animator.StringToHash("directionY");
 
     [Header("Player")]
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private float moveSpeed = 5f;
-    
-    //[SerializeField] private bool isLookingLeft;
 
-    [Header("Rotate Sprites")]
-    [SerializeField] private SpriteRotationHandler playerSpriteRotation;
+    [Header("Dash")]
+    [SerializeField] private float dashForce = 5f;
+    [SerializeField] private float dashDelay = 1f;
 
     [Header("Bullets")]
     public BulletController bulletPrefab;
 
     [SerializeField] private Transform gunPivot;
+
+    [Header("Gun Pivots")]
+    [SerializeField] private Transform gunDownLocation;
+    [SerializeField] private Transform gunUpLocation;
+    [SerializeField] private Transform gunSideLocation;
+
     [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private float waitForAnimation = 0.2f;
     [SerializeField] private int maxBullets = 10;
     [SerializeField] public float delayToReload = 0.2f;
 
-    private int _currentBullets;
+    private int _currentBullets = 0;
     private bool _isCanShoot = true;
+    private bool _isDashing = false;
     
-    private Camera _main;
-    private Vector3 _mouseWorldPosition;
     private Vector2 _targetDirection;
 
     private InputReference _inputReference;
@@ -59,8 +65,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _main = Camera.main;
         _currentBullets = maxBullets;
+        UpdateToSide();
     }
 
     private void OnEnable()
@@ -85,7 +91,6 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance && GameManager.Instance.Paused)
             return;
 
-        _mouseWorldPosition = _main.ScreenToWorldPoint(_inputReference.MousePosition);
         _targetDirection = _inputReference.Movement;
 
         ShootInputTrigger();
@@ -95,6 +100,8 @@ public class PlayerController : MonoBehaviour
         if (!IsMoving())
             return;
 
+        DashInpuTrigger();
+
         UpdateGunRotation();
         UpdatePlayerScale();
     }
@@ -102,6 +109,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_health.IsDie)
+            return;
+
+        if(_isDashing)
             return;
 
         _rigidbody2D.velocity = _targetDirection * moveSpeed;
@@ -114,12 +124,18 @@ public class PlayerController : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Sign(_targetDirection.x), 1, 1);
     }
 
+    public void UpdateToDown() => UpdateGunPosition(gunDownLocation.position);
+    public void UpdateToUp() => UpdateGunPosition(gunUpLocation.position);
+    public void UpdateToSide() => UpdateGunPosition(gunSideLocation.position);
+
+    public void UpdateGunPosition(Vector3 newPosition)
+    {
+        gunPivot.position = newPosition;
+    }
+
     private void UpdateGunRotation()
     {
         gunPivot.up = _targetDirection;
-
-        //float angle = Mathf.Atan2(_targetDirection.y, _targetDirection.x) * Mathf.Rad2Deg;
-        //gunPivot.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
 
     private void PauseInputTrigger()
@@ -129,7 +145,6 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.PauseResume();
         }
     }
-
     private void ShootInputTrigger()
     {
         if (_inputReference.ShootButton.IsPressed && _currentBullets > 0)
@@ -143,17 +158,37 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger(AttackParam);
         }
     }
+    private void DashInpuTrigger()
+    {
+        if(_inputReference.DashButton.IsPressed && !_isDashing)
+        {
+            _isDashing = true;
+
+            _rigidbody2D.AddForce(_targetDirection * dashForce, ForceMode2D.Impulse);
+
+            StartCoroutine(IE_ResetDash());
+
+            playerAnimator.SetTrigger(DashParam);
+        }
+    }
+
+    private IEnumerator IE_ResetDash()
+    {
+        yield return new WaitForSeconds(dashDelay);
+        _isDashing = false;
+    }
 
     private IEnumerator IE_CanShoot()
     {
         _isCanShoot = false;
+
+        yield return new WaitForSeconds(waitForAnimation);
 
         BulletController bullet = Instantiate(bulletPrefab, gunPivot.position, gunPivot.rotation);
         bullet.speedBullet = bulletSpeed;
         bullet.transform.up = gunPivot.up;
 
         yield return new WaitForSeconds(delayToReload);
-        
 
         _isCanShoot = true;
     }
@@ -187,18 +222,5 @@ public class PlayerController : MonoBehaviour
 
         playerAnimator.SetFloat(DirectionXParam, _targetDirection.x);
         playerAnimator.SetFloat(DirectionYParam, _targetDirection.y);
-
-        //olhando para esquerda, mouse na direita
-        //if (isLookingLeft && _mouseWorldPosition.x > transform.position.x)
-        //{
-        //    isLookingLeft = false;
-        //    playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.startRotation);
-        //}
-
-        //if(!isLookingLeft && _mouseWorldPosition.x < transform.position.x)
-        //{
-        //    isLookingLeft = true;
-        //    playerSpriteRotation.sprite.transform.localRotation = Quaternion.Euler(playerSpriteRotation.targetRotation);
-        //}
     }
 }

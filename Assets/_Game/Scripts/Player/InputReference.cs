@@ -20,6 +20,7 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
     public Vector2 MousePosition { get; private set; } = Vector2.zero;
     public InputButton PauseButton { get; private set; } = new InputButton();
     public InputButton ShootButton { get; private set; } = new InputButton();
+    public InputButton DashButton { get; private set; } = new InputButton();
 
     private PlayerInputMap playerInputs;
 
@@ -55,6 +56,12 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         StartCoroutine(ResetButton(PauseButton));
     }
 
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        DashButton.IsPressed = context.ReadValueAsButton();
+        StartCoroutine(ResetButton(DashButton));
+    }
+
     private IEnumerator ResetButton(InputButton button)
     {
         yield return new WaitForEndOfFrame();
@@ -62,4 +69,6 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         if (button.IsPressed)
             button.IsPressed = false;
     }
+
+    
 }
