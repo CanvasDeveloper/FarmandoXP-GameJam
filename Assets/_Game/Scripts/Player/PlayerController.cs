@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isCanShoot = true;
     private bool _isDashing = false;
+    private bool _isTriggeredAudio = false;
     
     private Vector2 _targetDirection;
 
@@ -95,9 +96,21 @@ public class PlayerController : MonoBehaviour
 
         _targetDirection = _inputReference.Movement;
 
+        if(_targetDirection.magnitude > 0 && !_isTriggeredAudio)
+        {
+            _isTriggeredAudio = true;
+            TriggerAudio();
+        }
+
+        if(_targetDirection != Vector2.zero)
+        {
+            _isTriggeredAudio = false;
+        }
+
         ShootInputTrigger();
 
         UpdateAnimator();
+
 
         if (!IsMoving())
             return;
@@ -106,6 +119,11 @@ public class PlayerController : MonoBehaviour
 
         UpdateGunRotation();
         UpdatePlayerScale();
+    }
+
+    private void TriggerAudio()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Wings", transform.position);
     }
 
     private void FixedUpdate()

@@ -43,8 +43,6 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         var input = context.ReadValue<Vector2>();
 
         Movement = new Vector2(input.x, input.y).normalized;
-
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Wings", GetComponent<Transform>().position);
     }
 
     public void OnShoot(InputAction.CallbackContext context)
