@@ -213,8 +213,8 @@ TextureImporter:
       name: chaobranco_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 86
+        x: 160
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -234,8 +234,8 @@ TextureImporter:
       name: chaobranco_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 86
+        x: 192
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -255,8 +255,8 @@ TextureImporter:
       name: chaobranco_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 86
+        x: 224
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -276,8 +276,8 @@ TextureImporter:
       name: chaobranco_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 86
+        x: 256
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -297,8 +297,8 @@ TextureImporter:
       name: chaobranco_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 86
+        x: 288
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -318,8 +318,8 @@ TextureImporter:
       name: chaobranco_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 54
+        x: 320
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -339,8 +339,8 @@ TextureImporter:
       name: chaobranco_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 54
+        x: 352
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -360,8 +360,8 @@ TextureImporter:
       name: chaobranco_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 54
+        x: 384
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -381,8 +381,8 @@ TextureImporter:
       name: chaobranco_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 54
+        x: 416
+        y: 118
         width: 32
         height: 32
       alignment: 0
@@ -402,8 +402,8 @@ TextureImporter:
       name: chaobranco_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 54
+        x: 0
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -423,8 +423,8 @@ TextureImporter:
       name: chaobranco_15
       rect:
         serializedVersion: 2
-        x: 160
-        y: 54
+        x: 32
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -444,8 +444,8 @@ TextureImporter:
       name: chaobranco_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 22
+        x: 64
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -465,8 +465,8 @@ TextureImporter:
       name: chaobranco_17
       rect:
         serializedVersion: 2
-        x: 32
-        y: 22
+        x: 96
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -486,8 +486,8 @@ TextureImporter:
       name: chaobranco_18
       rect:
         serializedVersion: 2
-        x: 64
-        y: 22
+        x: 128
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -507,8 +507,8 @@ TextureImporter:
       name: chaobranco_19
       rect:
         serializedVersion: 2
-        x: 96
-        y: 22
+        x: 160
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -528,8 +528,8 @@ TextureImporter:
       name: chaobranco_20
       rect:
         serializedVersion: 2
-        x: 128
-        y: 22
+        x: 192
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -549,8 +549,8 @@ TextureImporter:
       name: chaobranco_21
       rect:
         serializedVersion: 2
-        x: 160
-        y: 22
+        x: 224
+        y: 86
         width: 32
         height: 32
       alignment: 0
@@ -562,6 +562,489 @@ TextureImporter:
       bones: []
       spriteID: 83ca1d0320b3b6c4390a255e50a623fe
       internalID: 317557000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 86
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 447b7124e348e4043b5c68a78542541c
+      internalID: -817459611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_23
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 86
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b2e88cf9daebda468987fee7e5eb174
+      internalID: -245491625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_24
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 86
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68864be64a70609468cd6534ca62fc2e
+      internalID: 638046008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5f5931bf1d3364e88f6a86877d77e1
+      internalID: 233518996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_26
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6d9e93d3a1aa141a42c9c3d83f9f43
+      internalID: 494240304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_27
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff59013ced18c9498d35a637e458aef
+      internalID: -1301953274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aab88589d32f21479ea2489b3b69100
+      internalID: 1743898732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbf0faa430400640a9dd05135ecfa56
+      internalID: -1186556951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_30
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b995553274f39754bbae6bf7e71d053d
+      internalID: -1131633319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_31
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa530070fd69e5488caa311b63bc1e7
+      internalID: 1589671391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8f95a42a1f8654ab15b9bc0e86e444
+      internalID: -1987437737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_33
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3891519a7c420c48ad6e3a216b5d38b
+      internalID: -65418719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_34
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 54
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520b3e2a5842a8f47b637c928bfc11a6
+      internalID: -1955983873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a80547400271df48a12c1d2fb7f5911
+      internalID: -1584320322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295ba0743ffae3e49a29a9f92666cd75
+      internalID: 1931950750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_37
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c87d91f1610af4e95f947f8eddf857
+      internalID: 1497218297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_38
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf91ee007b22e1244aab8b2935ab6646
+      internalID: 1075315852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_39
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900b17caf611b824581be23e84db5e7b
+      internalID: -481159005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_40
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c34880553acc8b40bd70c6f3a62576a
+      internalID: -216063701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_41
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8634fb43afeb12144baaf3ac8563decb
+      internalID: -1794307842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_42
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657e70c409110d0478608921925c90b6
+      internalID: 1408680596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db86a43a53b8ce46b75b3e2758808ce
+      internalID: -1281000782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaobranco_44
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 22
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d118ff6849fb5141bbc5958d629a96a
+      internalID: 1604826679
       vertices: []
       indices: 
       edges: []
@@ -592,8 +1075,31 @@ TextureImporter:
       chaobranco_2: 307051264
       chaobranco_20: -863369739
       chaobranco_21: 317557000
+      chaobranco_22: -817459611
+      chaobranco_23: -245491625
+      chaobranco_24: 638046008
+      chaobranco_25: 233518996
+      chaobranco_26: 494240304
+      chaobranco_27: -1301953274
+      chaobranco_28: 1743898732
+      chaobranco_29: -1186556951
       chaobranco_3: 198477320
+      chaobranco_30: -1131633319
+      chaobranco_31: 1589671391
+      chaobranco_32: -1987437737
+      chaobranco_33: -65418719
+      chaobranco_34: -1955983873
+      chaobranco_35: -1584320322
+      chaobranco_36: 1931950750
+      chaobranco_37: 1497218297
+      chaobranco_38: 1075315852
+      chaobranco_39: -481159005
       chaobranco_4: -187913215
+      chaobranco_40: -216063701
+      chaobranco_41: -1794307842
+      chaobranco_42: 1408680596
+      chaobranco_43: -1281000782
+      chaobranco_44: 1604826679
       chaobranco_5: 905712254
       chaobranco_6: -660473087
       chaobranco_7: 368563590
