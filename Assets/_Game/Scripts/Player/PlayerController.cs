@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsWalkParam = Animator.StringToHash("isWalk");
     private static readonly int IsDieParam = Animator.StringToHash("isDie");
     private static readonly int TakeDamageParam = Animator.StringToHash("takeDamage");
+
     private static readonly int DashParam = Animator.StringToHash("dash");
     private static readonly int DirectionXParam = Animator.StringToHash("directionX");
     private static readonly int DirectionYParam = Animator.StringToHash("directionY");
+
+    private static readonly int TottemDirectionXParam = Animator.StringToHash("tottemDirectionX");
+    private static readonly int TottemDirectionYParam = Animator.StringToHash("tottemDirectionY");
     private static readonly int IsRechargingTottemParam = Animator.StringToHash("isRechargingTottem");
 
     public event Action<float, float> OnTriggerShootEvent; //current / max
@@ -106,29 +110,40 @@ public class PlayerController : MonoBehaviour
         TriggerOnWalkAudio();
         CalculateStoppedTime();
 
-        UpdateAnimator();
-
-        if (IsRechargingTottem())
-        {
-            _currentTottem.TriggerPlayerRecharged(this, true);
-            RemoveBullets();
-            return;
-        }
-
-        if (_currentTottem)
-        {
-            _currentTottem.TriggerPlayerRecharged(this, false);
-        }
-
+        RechargingInputTrigger();
         ShootInputTrigger();
+
+        UpdatePlayerScale();
+
+        UpdateAnimator();
 
         if (!IsMoving())
             return;
 
-        DashInpuTrigger();
+        if (IsRechargingTottem())
+            return;
 
+        DashInpuTrigger();
         UpdateGunRotation();
-        UpdatePlayerScale();
+    }
+
+    private void RechargingInputTrigger()
+    {
+        if (IsRechargingTottem())
+        {
+            _currentTottem.TriggerPlayerRecharged(this, true);
+
+            var tottemDir = (transform.position - _currentTottem.transform.position).normalized;
+
+            playerAnimator.SetFloat(TottemDirectionXParam, tottemDir.x);
+            playerAnimator.SetFloat(TottemDirectionYParam, tottemDir.y);
+
+            RemoveBullets();
+        }
+        else if (_currentTottem)
+        {
+            _currentTottem.TriggerPlayerRecharged(this, false);
+        }
     }
 
     private void FixedUpdate()

@@ -71,7 +71,7 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
 
     public void OnRecharge(InputAction.CallbackContext context)
     {
-        DashButton.IsPressed = context.ReadValueAsButton();
+        RechargeTottemButton.IsPressed = context.ReadValueAsButton();
     }
 
     private IEnumerator ResetButton(InputButton button)
