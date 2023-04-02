@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ResumePauseButton : MonoBehaviour
+public class ResumePauseButton : ButtonBase
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void ButtonBehaviour()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.ResumeGame();
     }
 }

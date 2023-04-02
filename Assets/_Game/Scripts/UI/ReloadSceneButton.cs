@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ReloadSceneButton : MonoBehaviour
+public class ReloadSceneButton : ButtonBase
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void ButtonBehaviour()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneLoader.Instance.ReloadScene();
     }
 }
