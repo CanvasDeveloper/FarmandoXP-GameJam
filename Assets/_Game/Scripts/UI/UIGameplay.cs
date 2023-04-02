@@ -36,7 +36,7 @@ public class UIGameplay : MonoBehaviour
     {
         totenImage.ForEach(x => x.image.gameObject.SetActive(false));
 
-        playerController.OnTriggerShootEvent += UpdateManaBar;
+        playerController.OnUpdateManaQuantity += UpdateManaBar;
         healthSystem.OnChangeHealth += UpdateLifeBar;
 
         GameManager.Instance.OnPauseStatusChange += UpdatePauseMenu;
@@ -47,7 +47,7 @@ public class UIGameplay : MonoBehaviour
 
     private void OnDestroy()
     {
-        playerController.OnTriggerShootEvent -= UpdateManaBar;
+        playerController.OnUpdateManaQuantity -= UpdateManaBar;
         healthSystem.OnChangeHealth -= UpdateLifeBar;
 
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;

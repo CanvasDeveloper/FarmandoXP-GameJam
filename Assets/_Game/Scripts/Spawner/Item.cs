@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     {
         if(collision.TryGetComponent(out PlayerController player))
         {
-            player.AddBullets(amount);
+            player.AddMana(amount);
             SpawnCollectablesManager.Instance.AddToAvaliable(index);
 
             gameObject.SetActive(false);

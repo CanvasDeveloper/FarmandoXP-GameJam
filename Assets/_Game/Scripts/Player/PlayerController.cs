@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int TottemDirectionYParam = Animator.StringToHash("tottemDirectionY");
     private static readonly int IsRechargingTottemParam = Animator.StringToHash("isRechargingTottem");
 
-    public event Action<float, float> OnTriggerShootEvent; //current / max
+    public event Action<float, float> OnUpdateManaQuantity; //current / max
 
     [Header("Player")]
     [SerializeField] private Animator playerAnimator;
@@ -134,17 +134,6 @@ public class PlayerController : MonoBehaviour
         UpdateGunRotation();
     }
 
-    private void AutoRecoverMana()
-    {
-        _timeRecoveringBullets += Time.deltaTime;
-
-        if(_timeRecoveringBullets > 1)
-        {
-            currentBullets += (percent * maxBullets);
-            _timeRecoveringBullets = 0;
-        }
-    }
-
     private void RechargingInputTrigger()
     {
         if (IsRechargingTottem())
@@ -156,7 +145,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetFloat(TottemDirectionXParam, tottemDir.x);
             playerAnimator.SetFloat(TottemDirectionYParam, tottemDir.y);
 
-            RemoveBullets();
+            RemoveBulletsConstantly();
         }
         else if (_currentTottem)
         {
@@ -243,7 +232,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ShootInputTrigger()
     {
-        if (_inputReference.ShootButton.IsPressed && currentBullets > 0 && !_isDashing)
+        if (_inputReference.ShootButton.IsPressed && currentBullets > requiredToShoot && !_isDashing)
         {
             if (!_isCanShoot)
                 return;
@@ -279,33 +268,31 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(waitForAnimation);
 
-        currentBullets--;
+        RemoveBullets(requiredToShoot);
 
         BulletController bullet = Instantiate(bulletPrefab, gunPivot.position, gunPivot.rotation);
         bullet.speedBullet = bulletSpeed;
         bullet.transform.up = gunPivot.up;
-
-        OnTriggerShootEvent?.Invoke(currentBullets, maxBullets);
 
         yield return new WaitForSeconds(delayToReload);
 
         _isCanShoot = true;
     }
 
-    public void AddBullets(int count)
+    public void AddMana(float amount)
     {
         if (currentBullets >= maxBullets)
             return;
 
-        currentBullets += count;
+        currentBullets += amount;
 
         if(currentBullets >= maxBullets)
-        {
             currentBullets = maxBullets;
-        }
+
+        OnUpdateManaQuantity?.Invoke(currentBullets, maxBullets);
     }
 
-    public void RemoveBullets()
+    public void RemoveBulletsConstantly()
     {
         if(currentBullets <= 0)
             return;
@@ -314,8 +301,30 @@ public class PlayerController : MonoBehaviour
 
         if (_timeRemovingBullets > removingBulletsDelay)
         {
-            currentBullets--;
+            RemoveBullets(requiredToShoot);
             _timeRemovingBullets = 0;
+        }
+    }
+
+    private void RemoveBullets(float amount)
+    {
+        currentBullets -= amount;
+
+        if (currentBullets < 0)
+            currentBullets = 0;
+
+        OnUpdateManaQuantity?.Invoke(currentBullets, maxBullets);
+    }
+
+    private void AutoRecoverMana()
+    {
+        _timeRecoveringBullets += Time.deltaTime;
+
+        if (_timeRecoveringBullets > 1)
+        {
+            AddMana(percent * maxBullets);
+
+            _timeRecoveringBullets = 0;
         }
     }
 
