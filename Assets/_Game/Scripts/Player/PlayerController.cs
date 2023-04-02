@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private static readonly int DirectionXParam = Animator.StringToHash("directionX");
     private static readonly int DirectionYParam = Animator.StringToHash("directionY");
 
+    public event Action<float, float> OnTriggerShootEvent; //current / max
+
     [Header("Player")]
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private float moveSpeed = 5f;
@@ -58,6 +60,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
 
     private IDamageable _health;
+
+    public int OnUpdateBullets { get; internal set; }
 
     private void Awake()
     {
@@ -178,7 +182,6 @@ public class PlayerController : MonoBehaviour
             if (!_isCanShoot)
                 return;
 
-            currentBullets--;
             StartCoroutine(IE_CanShoot());
 
             playerAnimator.SetTrigger(AttackParam);
@@ -210,9 +213,13 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(waitForAnimation);
 
+        currentBullets--;
+
         BulletController bullet = Instantiate(bulletPrefab, gunPivot.position, gunPivot.rotation);
         bullet.speedBullet = bulletSpeed;
         bullet.transform.up = gunPivot.up;
+
+        OnTriggerShootEvent?.Invoke(currentBullets, maxBullets);
 
         yield return new WaitForSeconds(delayToReload);
 
