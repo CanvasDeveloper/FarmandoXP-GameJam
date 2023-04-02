@@ -32,6 +32,12 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         playerInputs.Enable();
     }
 
+    private void OnDestroy()
+    {
+        playerInputs.Gameplay.SetCallbacks(null);
+        playerInputs.Disable();
+    }
+
     public void OnMousePosition(InputAction.CallbackContext context)
     {
         var input = context.ReadValue<Vector2>();
