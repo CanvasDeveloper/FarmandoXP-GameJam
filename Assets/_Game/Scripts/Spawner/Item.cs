@@ -2,7 +2,7 @@
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private int amount;
+    [SerializeField] private float amount;
     private int index;
 
     public void SetSpawnIndex(int i)
