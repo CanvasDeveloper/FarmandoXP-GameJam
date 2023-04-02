@@ -48,8 +48,11 @@ public class PlayerController : MonoBehaviour
 
     private bool _isCanShoot = true;
     private bool _isDashing = false;
+    private bool _isTriggeredMovementAudio = false;
     
     private Vector2 _targetDirection;
+
+    private float _timeStopped;
 
     private InputReference _inputReference;
     private Rigidbody2D _rigidbody2D;
@@ -95,9 +98,25 @@ public class PlayerController : MonoBehaviour
 
         _targetDirection = _inputReference.Movement;
 
+        if (_targetDirection != Vector2.zero && !_isTriggeredMovementAudio)
+        {
+            _timeStopped = 0f;
+            _isTriggeredMovementAudio = true;
+            TriggerAudio();
+        }
+
+        if (_targetDirection == Vector2.zero)
+        {
+            _timeStopped += Time.deltaTime;
+
+            if(_timeStopped > 0.2f)
+                _isTriggeredMovementAudio = false;
+        }
+
         ShootInputTrigger();
 
         UpdateAnimator();
+
 
         if (!IsMoving())
             return;
@@ -106,6 +125,11 @@ public class PlayerController : MonoBehaviour
 
         UpdateGunRotation();
         UpdatePlayerScale();
+    }
+
+    private void TriggerAudio()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Wings", transform.position);
     }
 
     private void FixedUpdate()
