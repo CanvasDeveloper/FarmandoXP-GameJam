@@ -31,8 +31,10 @@ public class UIGameplay : MonoBehaviour
         healthSystem = playerController.GetComponent<HealthSystem>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
+        totenImage.ForEach(x => x.image.gameObject.SetActive(false));
+
         playerController.OnTriggerShootEvent += UpdateManaBar;
         healthSystem.OnChangeHealth += UpdateLifeBar;
 
@@ -40,18 +42,13 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnGameOver += OpenGameoverMenu;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         playerController.OnTriggerShootEvent -= UpdateManaBar;
         healthSystem.OnChangeHealth -= UpdateLifeBar;
 
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
-    }
-
-    private void Start()
-    {
-        totenImage.ForEach(x => x.image.gameObject.SetActive(false));
     }
 
     private void UpdateLifeBar(float current, float max)
