@@ -11,6 +11,9 @@ public class SlotColor
 
 public class Tottem : MonoBehaviour
 {
+    private bool hasStartTriggerAudio = false;
+    private bool hasEndTriggerAudio = false;
+
     #region PUBLIC VARIABLES
 
     public ColorTottemEnum colorTottem;
@@ -38,9 +41,17 @@ public class Tottem : MonoBehaviour
 
     #endregion EVENTS
 
+    FMOD.Studio.EventInstance ChargingSound;
+    FMOD.Studio.EventInstance IdleSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        IdleSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Totem/Totem Aura Dark");
+        IdleSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(IdleSound, transform, true);
+        IdleSound.start();
+
         Subscribe();
 
         float light = 0; // usado para setar o valor inicial
@@ -110,7 +121,7 @@ public class Tottem : MonoBehaviour
                 return;
 
         }
-
+        
         SpriteRenderer current = null;
         int amountSlotCompleted = 0;
         for (int i = 0; i < SlotColors.Count; i++)
@@ -128,6 +139,30 @@ public class Tottem : MonoBehaviour
             {
                 TottemManager.OnTottemRecharged?.Invoke(colorTottem); // TOTEM COMPLETO;
                 IsCompletedTottem = true;
+                ChargingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                ChargingSound.release();
+                switch (colorTottem)
+                {
+                    case ColorTottemEnum.Yellow:
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Totem/Amarelo", transform.position);
+                        break;
+                    case ColorTottemEnum.Red:
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Totem/Vermelho", transform.position);
+                        break;
+                    case ColorTottemEnum.Blue:
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Totem/Azul", transform.position);
+                        break;
+                    case ColorTottemEnum.Cyan:
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Totem/Ciano", transform.position);
+                        break;
+                    case ColorTottemEnum.Magenta:
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Totem/Magenta", transform.position);
+                        break;
+                    case ColorTottemEnum.Green:
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Totem/Verde", transform.position);
+                        break;
+                }
+                
                 return;
             }
         }
@@ -139,15 +174,43 @@ public class Tottem : MonoBehaviour
             currentLight = current.size.y;
             currentLight += Time.deltaTime / _RechargeValueBySecond;
             currentLight = Mathf.Clamp01(currentLight);
-
+            
             if (currentLight >= startYValue)
                 currentLight = startYValue;
             current.size = new Vector2(current.size.x, currentLight);
         }
+        
     }
 
     public void TriggerPlayerRecharged(PlayerController controller, bool value)
     {
+        if (value && !hasStartTriggerAudio)
+        {
+            hasStartTriggerAudio = true;
+
+            IdleSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            IdleSound.release();
+            ChargingSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Totem/Totem Aura Lit");
+            ChargingSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(ChargingSound, transform, true);
+            ChargingSound.start();
+        }
         OnPlayerRecharged?.Invoke(value);
+        
     }
 }
+/*if (!hasStartTriggerAudio)
+{
+    hasStartTriggerAudio = true;
+
+    instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Fada/Cast Start");
+    instance.start();
+}
+if (!hasEndTriggerAudio)
+{
+    hasEndTriggerAudio = true;
+
+    instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    instance.release();
+    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Cast End", transform.position);
+}*/
