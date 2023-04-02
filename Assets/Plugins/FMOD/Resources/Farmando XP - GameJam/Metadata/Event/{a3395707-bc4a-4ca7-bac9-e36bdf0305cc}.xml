@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a3395707-bc4a-4ca7-bac9-e36bdf0305cc}">
 		<property name="name">
-			<value>Totem Aura</value>
+			<value>Totem Aura Lit</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
