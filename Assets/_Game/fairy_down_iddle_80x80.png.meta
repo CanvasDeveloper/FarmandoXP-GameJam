@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 62b8d569d6e175248b2726d3f3d49cbe
+guid: d04ba59ae97c7674a8a898f87908f0f8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_side_iniEMO_80x80_0
+      name: fairy_down_iddle_80x80_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61a6e9d5e301964448abf71dabcbc140
-      internalID: -1959606674
+      spriteID: 43d179ac6d59d224489800dd0e795db1
+      internalID: 189259286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_iniEMO_80x80_1
+      name: fairy_down_iddle_80x80_1
       rect:
         serializedVersion: 2
         x: 80
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11f711faca8cce449ac13a9e65e8ed0e
-      internalID: 1369739090
+      spriteID: 68d09dd374086ae46a9cd8a0316693e9
+      internalID: -660353500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_iniEMO_80x80_2
+      name: fairy_down_iddle_80x80_2
       rect:
         serializedVersion: 2
         x: 160
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5793887fd5f39c847b8ea665594f7844
-      internalID: -1421822950
+      spriteID: 15edd04c44168d745a6f6139e74b1e76
+      internalID: 1770703326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_iniEMO_80x80_3
+      name: fairy_down_iddle_80x80_3
       rect:
         serializedVersion: 2
         x: 240
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfdfdf2fabafe704092413ce66534199
-      internalID: 2084261616
+      spriteID: f9cd03ad103e8b2459439dd78a6a7cfd
+      internalID: -910308133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_iniEMO_80x80_4
+      name: fairy_down_iddle_80x80_4
       rect:
         serializedVersion: 2
         x: 320
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69081f58c89bf3740a5e8ec527431550
-      internalID: 1222057904
+      spriteID: 6a826deacf8ed0447a373327b058322a
+      internalID: -2088153886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_iniEMO_80x80_5
+      name: fairy_down_iddle_80x80_5
       rect:
         serializedVersion: 2
         x: 400
@@ -224,8 +224,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ecd9f863f38d3f4f984a42943fb4c14
-      internalID: 981962720
+      spriteID: 648358ba163e1c34da4cc95e0c754434
+      internalID: -279741066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fairy_down_iddle_80x80_6
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19ad38dec48cc974d9018834d59417dc
+      internalID: -42634211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fairy_down_iddle_80x80_7
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f6c259df29dce42abb9b31aa96ed27
+      internalID: 1662289892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fairy_down_iddle_80x80_8
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c378c598a73fef49a4e35d289ae8e7e
+      internalID: 320268400
       vertices: []
       indices: 
       edges: []
@@ -241,12 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_side_iniEMO_80x80_0: -1959606674
-      walk_side_iniEMO_80x80_1: 1369739090
-      walk_side_iniEMO_80x80_2: -1421822950
-      walk_side_iniEMO_80x80_3: 2084261616
-      walk_side_iniEMO_80x80_4: 1222057904
-      walk_side_iniEMO_80x80_5: 981962720
+      fairy_down_iddle_80x80_0: 189259286
+      fairy_down_iddle_80x80_1: -660353500
+      fairy_down_iddle_80x80_2: 1770703326
+      fairy_down_iddle_80x80_3: -910308133
+      fairy_down_iddle_80x80_4: -2088153886
+      fairy_down_iddle_80x80_5: -279741066
+      fairy_down_iddle_80x80_6: -42634211
+      fairy_down_iddle_80x80_7: 1662289892
+      fairy_down_iddle_80x80_8: 320268400
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
