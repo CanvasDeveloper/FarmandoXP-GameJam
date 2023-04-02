@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ShootInputTrigger()
     {
-        if (_inputReference.ShootButton.IsPressed && currentBullets > 0)
+        if (_inputReference.ShootButton.IsPressed && currentBullets > 0 && !_isDashing)
         {
             if (!_isCanShoot)
                 return;
