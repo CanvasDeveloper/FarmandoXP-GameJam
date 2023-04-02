@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customPivot: {fileID: 4540578034028608491}
-  offset: 2
+  offsetZposition: 0
 --- !u!114 &3182997233592741114
 MonoBehaviour:
   m_ObjectHideFlags: 0

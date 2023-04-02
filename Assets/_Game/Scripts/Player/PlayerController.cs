@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private float dashForce = 5f;
     [SerializeField] private float dashDelay = 1f;
+    [SerializeField] private float dashDecharge = 0.5f;
+
 
     [Header("Bullets")]
     public BulletController bulletPrefab;
@@ -279,10 +281,10 @@ public class PlayerController : MonoBehaviour
     }
     private void DashInpuTrigger()
     {
-        if(_inputReference.DashButton.IsPressed && !_isDashing)
+        if(_inputReference.DashButton.IsPressed && !_isDashing && currentBullets > 0)
         {
             _isDashing = true;
-
+            currentBullets -= dashDecharge;
             _rigidbody2D.AddForce(_targetDirection * dashForce, ForceMode2D.Impulse);
 
             StartCoroutine(IE_ResetDash());
