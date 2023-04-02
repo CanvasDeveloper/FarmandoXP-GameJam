@@ -1,12 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
+[Serializable]
+public class TotemImage
+{    
+    public Image image;
+}
 
 public class UIGameplay : MonoBehaviour
 {
     [SerializeField] private Image playerHealth;
     [SerializeField] private Image playerMana;
 
-    [SerializeField] private Image[] totens;
+    [SerializeField] private List<TotemImage> totenImage;
 
     [SerializeField] private GameObject pausePanel;            
     [SerializeField] private GameObject gameoverPanel;
@@ -21,6 +29,11 @@ public class UIGameplay : MonoBehaviour
     {
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
+    }
+
+    private void Start()
+    {
+        totenImage.ForEach(x => x.image.gameObject.SetActive(false));
     }
 
     private void UpdatePauseMenu(bool value)
