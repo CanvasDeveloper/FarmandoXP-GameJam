@@ -54,13 +54,10 @@
 			<destination>{85161255-d23b-44f5-86c5-6e3e2954d841}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{a3d67519-daa1-4a67-8ac4-e376cb9f6c00}</destination>
+			<destination>{ca04e0b3-604c-4a5c-a670-5c9f2fd05d4c}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{f610efdb-9fd8-40e8-a751-82255f076360}">
-		<property name="maxVoices">
-			<value>1</value>
-		</property>
 		<property name="voiceStealing">
 			<value>2</value>
 		</property>
