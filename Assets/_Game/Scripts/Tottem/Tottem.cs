@@ -27,6 +27,8 @@ public class Tottem : MonoBehaviour
     private bool _isCompletedTottem;
     [SerializeField] private float _RechargeValueBySecond; //CONFIGRAR O TEMPO GASTO DE CARREGAR O TOTEM
 
+    [SerializeField] private float startYValue = 1;
+
     #endregion PRIVATE VARIABLES
 
     #region EVENTS
@@ -35,21 +37,19 @@ public class Tottem : MonoBehaviour
 
     #endregion EVENTS
 
-    private PlayerController currentPlayerController;
-
     // Start is called before the first frame update
     void Start()
     {
         Subscribe();
 
-        int light = 0; // usado para setar o valor inicial
+        float light = 0; // usado para setar o valor inicial
         
         foreach (var tottem in TottemManager.Instance.listTottemProgress) // VERIFICA O PROGRESSO DO TOTEM
         {
             if (tottem.tottemColor == colorTottem)
             {
                 if (tottem.isCompleted)
-                    light = 1;
+                    light = startYValue;
                 else
                     light = 0;
             }
@@ -63,7 +63,6 @@ public class Tottem : MonoBehaviour
             isSubTottem = true;
 
         UpdateRecharge();
-
     }
 
     private void OnDestroy()
@@ -112,7 +111,7 @@ public class Tottem : MonoBehaviour
         int amountSlotCompleted = 0;
         for (int i = 0; i < SlotColors.Count; i++)
         {
-            if (SlotColors[i].size.y >= 1)
+            if (SlotColors[i].size.y >= startYValue)
             {
                 amountSlotCompleted++; //TEM ALGUM SLOT COMPLETO
             }
@@ -137,15 +136,14 @@ public class Tottem : MonoBehaviour
             currentLight += Time.deltaTime / _RechargeValueBySecond;
             currentLight = Mathf.Clamp01(currentLight);
 
-            if (currentLight >= 1)
-                currentLight = 1;
+            if (currentLight >= startYValue)
+                currentLight = startYValue;
             current.size = new Vector2(current.size.x, currentLight);
         }
     }
 
     public void TriggerPlayerRecharged(PlayerController controller, bool value)
     {
-        currentPlayerController = controller;
         OnPlayerRecharged?.Invoke(value);
     }
 }
