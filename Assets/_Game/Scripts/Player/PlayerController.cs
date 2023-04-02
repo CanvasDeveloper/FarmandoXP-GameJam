@@ -48,9 +48,11 @@ public class PlayerController : MonoBehaviour
 
     private bool _isCanShoot = true;
     private bool _isDashing = false;
-    private bool _isTriggeredAudio = false;
+    private bool _isTriggeredMovementAudio = false;
     
     private Vector2 _targetDirection;
+
+    private float _timeStopped;
 
     private InputReference _inputReference;
     private Rigidbody2D _rigidbody2D;
@@ -96,15 +98,19 @@ public class PlayerController : MonoBehaviour
 
         _targetDirection = _inputReference.Movement;
 
-        if(_targetDirection.magnitude > 0 && !_isTriggeredAudio)
+        if (_targetDirection != Vector2.zero && !_isTriggeredMovementAudio)
         {
-            _isTriggeredAudio = true;
+            _timeStopped = 0f;
+            _isTriggeredMovementAudio = true;
             TriggerAudio();
         }
 
-        if(_targetDirection != Vector2.zero)
+        if (_targetDirection == Vector2.zero)
         {
-            _isTriggeredAudio = false;
+            _timeStopped += Time.deltaTime;
+
+            if(_timeStopped > 0.2f)
+                _isTriggeredMovementAudio = false;
         }
 
         ShootInputTrigger();
