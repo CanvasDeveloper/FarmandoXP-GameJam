@@ -5,6 +5,7 @@ using UnityEngine;
 
 
 public enum ColorTottemEnum { Red, Green, Blue, Cyan, Magenta, Yellow }
+
 [System.Serializable]
 public class TottemProgress
 {
@@ -12,42 +13,20 @@ public class TottemProgress
     public bool isCompleted;
 }
 
-[System.Serializable]
-public class SubTottemProgress : TottemProgress
+public class TottemManager : Singleton<TottemManager>
 {
+    public event Action<ColorTottemEnum> OnCompletedTottem;
 
-}
-
-public class TottemManager : MonoBehaviour
-{
     public Dictionary<ColorTottemEnum, bool> tottemProgress;
     public List<TottemProgress> listTottemProgress;
-
-    public static TottemManager instance { get; private set; }
 
     #region EVENTS
     public static Action<ColorTottemEnum> OnTottemRecharged; // quando todos slots foram carregados
     #endregion EVENTS
 
-    private void Awake()
+    private void Start()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
-
         Subscribe();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnDestroy()
@@ -72,6 +51,8 @@ public class TottemManager : MonoBehaviour
             if(tottem == item.tottemColor)
             {
                 item.isCompleted = true;
+                OnCompletedTottem?.Invoke(item.tottemColor);
+
                 Debug.LogFormat($"<color={item.tottemColor}>{item.tottemColor.ToString().ToUpper()}!!!!</color>");
             }
         }

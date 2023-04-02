@@ -5,7 +5,8 @@ using System;
 
 [Serializable]
 public class TotemImage
-{    
+{
+    public ColorTottemEnum color;
     public Image image;
 }
 
@@ -40,6 +41,8 @@ public class UIGameplay : MonoBehaviour
 
         GameManager.Instance.OnPauseStatusChange += UpdatePauseMenu;
         GameManager.Instance.OnGameOver += OpenGameoverMenu;
+
+        TottemManager.Instance.OnCompletedTottem += UpdateColorIcons;
     }
 
     private void OnDestroy()
@@ -49,6 +52,19 @@ public class UIGameplay : MonoBehaviour
 
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
+
+        TottemManager.Instance.OnCompletedTottem -= UpdateColorIcons;
+    }
+
+    private void UpdateColorIcons(ColorTottemEnum colorEnum)
+    {
+        foreach(TotemImage totem in totenImage)
+        {
+            if (totem.color != colorEnum)
+                continue;
+
+            totem.image.gameObject.SetActive(true);
+        }    
     }
 
     private void UpdateLifeBar(float current, float max)

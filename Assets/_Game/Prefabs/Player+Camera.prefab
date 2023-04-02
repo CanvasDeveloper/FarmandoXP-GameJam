@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 6579058094610347720}
   - component: {fileID: 6579058094610347727}
   - component: {fileID: 6579058094610347721}
+  - component: {fileID: 926122408802446250}
   m_Layer: 6
   m_Name: PlayerController
   m_TagString: Player
@@ -572,6 +573,7 @@ MonoBehaviour:
   maxBullets: 10
   delayToReload: 0.5
   currentBullets: 0
+  removingBulletsDelay: 0.25
 --- !u!114 &6579058094610347721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +589,18 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 3
   destroyOnDie: 0
   disableOnDie: 1
+--- !u!114 &926122408802446250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579058094610347571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95060619c3d4de9468a80b58dfb04fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6579058094675401323
 GameObject:
   m_ObjectHideFlags: 0

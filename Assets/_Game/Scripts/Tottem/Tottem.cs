@@ -1,36 +1,52 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public class SlotColor
+{
+    public SpriteRenderer[] spriteColors;
+    public bool isFull;
+}
 
 public class Tottem : MonoBehaviour
 {
     #region PUBLIC VARIABLES
+
     public ColorTottemEnum colorTottem;
     public bool isSubTottem;
     public List<SpriteRenderer> SlotColors;
     //public List<SlotColor> slotColors;
+
     #endregion PUBLIC VARIABLES
 
 
     #region PRIVATE VARIABLES
+
     private bool _isRecharging; // INDICA SE O PLAYER ESTÁ CARREGANDO O TOTEM
     private bool _isCompletedTottem;
-    [SerializeField] private  float _RechargeValueBySecond; //CONFIGRAR O TEMPO GASTO DE CARREGAR O TOTEM
+    [SerializeField] private float _RechargeValueBySecond; //CONFIGRAR O TEMPO GASTO DE CARREGAR O TOTEM
+
     #endregion PRIVATE VARIABLES
 
     #region EVENTS
-    public Action<bool> OnPlayerRecharged; // quando player está carregando o totem com a luz
+
+    public event Action<bool> OnPlayerRecharged; // quando player está carregando o totem com a luz
+
     #endregion EVENTS
+
+    private PlayerController currentPlayerController;
 
     // Start is called before the first frame update
     void Start()
     {
-        int light = 0; // usado para setar o valor inicial
         Subscribe();
-        foreach (var tottem in TottemManager.instance.listTottemProgress) // VERIFICA O PROGRESSO DO TOTEM
+
+        int light = 0; // usado para setar o valor inicial
+        
+        foreach (var tottem in TottemManager.Instance.listTottemProgress) // VERIFICA O PROGRESSO DO TOTEM
         {
-            if(tottem.tottemColor == colorTottem)
+            if (tottem.tottemColor == colorTottem)
             {
                 if (tottem.isCompleted)
                     light = 1;
@@ -50,20 +66,27 @@ public class Tottem : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        Unsubscribe();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (_isCompletedTottem)
             return;
+
         if (_isRecharging == false)
             return;
 
-        UpdateRecharge();
-    }
+        if (currentPlayerController)
+            currentPlayerController.RemoveBullets();
 
-    private void OnDestroy()
-    {
-        Unsubscribe();
+        if (currentPlayerController && !currentPlayerController.HasBullets())
+            return;
+
+        UpdateRecharge();
     }
 
     private void Subscribe()
@@ -85,25 +108,26 @@ public class Tottem : MonoBehaviour
     {
         if (isSubTottem)
         {
-            bool isValid = TottemManager.instance.CheckSubTottem(colorTottem);
+            bool isValid = TottemManager.Instance.CheckSubTottem(colorTottem);
             if (isValid == false)
                 return;
-                
+
         }
 
         SpriteRenderer current = null;
         int amountSlotCompleted = 0;
         for (int i = 0; i < SlotColors.Count; i++)
         {
-            if(SlotColors[i].size.y >= 1)
+            if (SlotColors[i].size.y >= 1)
             {
                 amountSlotCompleted++; //TEM ALGUM SLOT COMPLETO
-            }else
+            }
+            else
             {
                 current = SlotColors[i];
                 break;
             }
-            if(amountSlotCompleted == SlotColors.Count)
+            if (amountSlotCompleted == SlotColors.Count)
             {
                 TottemManager.OnTottemRecharged?.Invoke(colorTottem); // TOTEM COMPLETO;
                 _isCompletedTottem = true;
@@ -113,7 +137,7 @@ public class Tottem : MonoBehaviour
 
         //CARREGA O TOTTEM
         float currentLight = 0;
-        if(current != null)
+        if (current != null)
         {
             currentLight = current.size.y;
             currentLight += Time.deltaTime / _RechargeValueBySecond;
@@ -124,11 +148,10 @@ public class Tottem : MonoBehaviour
             current.size = new Vector2(current.size.x, currentLight);
         }
     }
-}
 
-[System.Serializable]
-public class SlotColor
-{
-    public SpriteRenderer[] spriteColors;
-    public bool isFull;
+    public void TriggerPlayerRecharged(PlayerController controller, bool value)
+    {
+        currentPlayerController = controller;
+        OnPlayerRecharged?.Invoke(value);
+    }
 }

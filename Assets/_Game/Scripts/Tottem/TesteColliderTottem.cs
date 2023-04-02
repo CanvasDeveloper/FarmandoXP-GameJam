@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class TesteColliderTottem : MonoBehaviour
 {
+    private PlayerController controller;
+
+    private void Awake()
+    {
+        controller = GetComponent<PlayerController>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!controller.HasBullets())
+            return;
+
         if(collision.tag == "RechargeTottem")
         {
-            collision.transform.parent.GetComponent<Tottem>().OnPlayerRecharged?.Invoke(true);
+            collision.transform.parent.GetComponent<Tottem>().TriggerPlayerRecharged(controller, true); //OnPlayerRecharged?.Invoke(true);
         }
     }
 
@@ -17,7 +26,7 @@ public class TesteColliderTottem : MonoBehaviour
     {
         if (collision.tag == "RechargeTottem")
         {
-            collision.transform.parent.GetComponent<Tottem>().OnPlayerRecharged?.Invoke(false);
+            collision.transform.parent.GetComponent<Tottem>().TriggerPlayerRecharged(controller, false); //OnPlayerRecharged?.Invoke(false);
         }
     }
 

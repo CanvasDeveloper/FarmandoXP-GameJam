@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float delayToReload = 0.2f;
 
     [SerializeField] private int currentBullets = 0;
+    [SerializeField] private float removingBulletsDelay = 0.5f;
 
     private bool _isCanShoot = true;
     private bool _isDashing = false;
@@ -55,13 +56,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 _targetDirection;
 
     private float _timeStopped;
+    private float _timeRemovingBullets;
 
     private InputReference _inputReference;
     private Rigidbody2D _rigidbody2D;
 
     private IDamageable _health;
-
-    public int OnUpdateBullets { get; internal set; }
 
     private void Awake()
     {
@@ -158,6 +158,8 @@ public class PlayerController : MonoBehaviour
     public void UpdateToUp() => UpdateGunPosition(gunUpLocation.position);
     public void UpdateToSide() => UpdateGunPosition(gunSideLocation.position);
 
+    public bool HasBullets() => currentBullets > 0;
+
     public void UpdateGunPosition(Vector3 newPosition)
     {
         gunPivot.position = newPosition;
@@ -228,11 +230,28 @@ public class PlayerController : MonoBehaviour
 
     public void AddBullets(int count)
     {
+        if (currentBullets >= maxBullets)
+            return;
+
         currentBullets += count;
 
         if(currentBullets >= maxBullets)
         {
             currentBullets = maxBullets;
+        }
+    }
+
+    public void RemoveBullets()
+    {
+        if(currentBullets <= 0)
+            return;
+
+        _timeRemovingBullets += Time.deltaTime;
+
+        if (_timeRemovingBullets > removingBulletsDelay)
+        {
+            currentBullets--;
+            _timeRemovingBullets = 0;
         }
     }
 
@@ -256,4 +275,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat(DirectionXParam, _targetDirection.x);
         playerAnimator.SetFloat(DirectionYParam, _targetDirection.y);
     }
+
+   
 }
