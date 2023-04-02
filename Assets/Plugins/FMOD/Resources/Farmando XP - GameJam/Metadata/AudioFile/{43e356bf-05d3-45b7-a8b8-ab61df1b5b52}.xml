@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{43e356bf-05d3-45b7-a8b8-ab61df1b5b52}">
+		<property name="assetPath">
+			<value>Emo Spawn A1.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.3999999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b9d59c25-4077-4fb4-a32f-05c357b7907f}</destination>
+		</relationship>
+	</object>
+</objects>

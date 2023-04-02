@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{38afd40e-d340-43cc-b55d-335ae3b22d98}">
+		<property name="assetPath">
+			<value>Totem Charge Up D.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.3333333333333335</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b9d59c25-4077-4fb4-a32f-05c357b7907f}</destination>
+		</relationship>
+	</object>
+</objects>
