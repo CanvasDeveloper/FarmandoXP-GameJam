@@ -111,16 +111,17 @@ public class PlayerController : MonoBehaviour
         CalculateStoppedTime();
 
         RechargingInputTrigger();
-        ShootInputTrigger();
-
+        
         UpdatePlayerScale();
 
         UpdateAnimator();
 
-        if (!IsMoving())
+        if (IsRechargingTottem())
             return;
 
-        if (IsRechargingTottem())
+        ShootInputTrigger();
+
+        if (!IsMoving())
             return;
 
         DashInpuTrigger();
