@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5505ccba2faabe94882f5e26ea817bd3
+guid: 69c488f70442fa64b93db24cbb4e3615
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: magic_light_50x50_0
+      name: ball_light 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fb8753a1fcfa7647b530ee28e1b9bc0
-      internalID: -302196755
+      spriteID: 6099f3b09d4ab5546b7ab0248107806d
+      internalID: -1805938079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_1
+      name: ball_light 1_1
       rect:
         serializedVersion: 2
         x: 50
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81e74cd6b758b3b448aa0d602daa8779
-      internalID: -672215467
+      spriteID: 3d56ca808f6e0d24195999c3c14321dc
+      internalID: 1754327158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_2
+      name: ball_light 1_2
       rect:
         serializedVersion: 2
         x: 100
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fce5c379824c45941b7436c73be2fc00
-      internalID: 1522035253
+      spriteID: 8ed78d4284474e54085451e0687a86ef
+      internalID: -340966266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_3
+      name: ball_light 1_3
       rect:
         serializedVersion: 2
         x: 150
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 701b481001533b74d83bdd7aa5f5f125
-      internalID: -1535037952
+      spriteID: d0f2fe8c6effd1c409bb5867332a7786
+      internalID: -1230671932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_4
+      name: ball_light 1_4
       rect:
         serializedVersion: 2
         x: 200
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 908748bd41b94c24d98247cf83101c5f
-      internalID: -1792618872
+      spriteID: e9a040dc33fb6b648b2cf0464eccb51c
+      internalID: -222633839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_5
+      name: ball_light 1_5
       rect:
         serializedVersion: 2
         x: 250
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5034f09d58e20346ba66f1e5be5a431
-      internalID: -485341003
+      spriteID: 481e405bba19d3444a44c1311b0f17fc
+      internalID: 689870714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_6
+      name: ball_light 1_6
       rect:
         serializedVersion: 2
         x: 300
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e95da9e4780c22f488e384746c7252de
-      internalID: 1190228359
+      spriteID: 197ba940da604b944ab9878987a57758
+      internalID: -434081156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_7
+      name: ball_light 1_7
       rect:
         serializedVersion: 2
         x: 350
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13468fb23f646134da65c82efdd681cc
-      internalID: 401614848
+      spriteID: c1f63dec0c2ca7d4188835d926f98b01
+      internalID: -1923961861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_8
+      name: ball_light 1_8
       rect:
         serializedVersion: 2
         x: 400
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec31159e2cac494ab79461a6b81dc06
-      internalID: -1613754757
+      spriteID: a5d2967a1f046bd4883b99045a94e5c0
+      internalID: 291120358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_9
+      name: ball_light 1_9
       rect:
         serializedVersion: 2
         x: 450
@@ -308,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a33d58a97a31374884a3a2fab7a34b6
-      internalID: -156227721
+      spriteID: cdf56609c8cced744a68f35a39487ac1
+      internalID: -158971353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_10
+      name: ball_light 1_10
       rect:
         serializedVersion: 2
         x: 500
@@ -329,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b011d1795b7fa844ad4f05df0682b8d
-      internalID: -1903777834
+      spriteID: ab95017037a9d944cacc26d1bc184619
+      internalID: 2040548070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_11
+      name: ball_light 1_11
       rect:
         serializedVersion: 2
         x: 550
@@ -350,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbaa65ada7ab7834ebea48ba326e3e49
-      internalID: -1142463930
+      spriteID: 0f242e2eba05f9843b7c0ce0512136be
+      internalID: -1446020887
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_12
+      name: ball_light 1_12
       rect:
         serializedVersion: 2
         x: 600
@@ -371,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94f3c40cf9423464195f9bc2deb103a0
-      internalID: -640777478
+      spriteID: f3d589f684d730042ab99ead5a8a40e2
+      internalID: 1675999964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_13
+      name: ball_light 1_13
       rect:
         serializedVersion: 2
         x: 650
@@ -392,14 +392,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cfc6fb18925d384fbe297be2377a2d7
-      internalID: 1796082380
+      spriteID: 6837fb5d0818c16488c5fa1046803467
+      internalID: -1864847870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_14
+      name: ball_light 1_14
       rect:
         serializedVersion: 2
         x: 700
@@ -413,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65ce3237cbc0b1e4a8d3f40e84f742f3
-      internalID: -510649992
+      spriteID: b0fb51d94ff98b6439ebb87eeb28c823
+      internalID: 1783127554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_15
+      name: ball_light 1_15
       rect:
         serializedVersion: 2
         x: 750
@@ -434,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bfb1b5ae25ab0c4fbecdc01a177f815
-      internalID: 2033311107
+      spriteID: f28de406f73debf4bab04f1c7a966b32
+      internalID: 259857596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_16
+      name: ball_light 1_16
       rect:
         serializedVersion: 2
         x: 800
@@ -455,14 +455,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 771dc1cd845591d4e92d19297ab6e130
-      internalID: 976528770
+      spriteID: 98c82d5f06669b74fbc69050978d35ab
+      internalID: 825174319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_17
+      name: ball_light 1_17
       rect:
         serializedVersion: 2
         x: 850
@@ -476,14 +476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82ac7ea17bbb2b24c9cf1ae53b2acc6d
-      internalID: -1584296752
+      spriteID: bf55d71b58405c94bba1e9005c9be864
+      internalID: 1036320368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_18
+      name: ball_light 1_18
       rect:
         serializedVersion: 2
         x: 900
@@ -497,14 +497,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8ed4ba6eff65d04bb1922db419ccd70
-      internalID: -464226471
+      spriteID: 47e25ee6ba412184ba2d40aa8346d196
+      internalID: 752652080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_19
+      name: ball_light 1_19
       rect:
         serializedVersion: 2
         x: 950
@@ -518,14 +518,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd03527e9d3e55b408bda73e240b336f
-      internalID: -752537356
+      spriteID: a0dc54224551f084c96d94a204c63d71
+      internalID: -83563494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_20
+      name: ball_light 1_20
       rect:
         serializedVersion: 2
         x: 1000
@@ -539,14 +539,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cecd05dff65ca1f4a9f57ab4308e59dc
-      internalID: 2048577802
+      spriteID: b39d35d7e75f3514ea04688a2bfd747c
+      internalID: 1828208629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_21
+      name: ball_light 1_21
       rect:
         serializedVersion: 2
         x: 1050
@@ -560,14 +560,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75147b98edaa73d44b9fb2202d217b6f
-      internalID: 1600919187
+      spriteID: 2e75902be38cf384db5755a91830ebd3
+      internalID: 2083446068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_22
+      name: ball_light 1_22
       rect:
         serializedVersion: 2
         x: 1100
@@ -581,14 +581,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81ef0dc635b84814bab2eb585efcb835
-      internalID: 1592184977
+      spriteID: 5f50aead82d3329478eb9cb04ede10d3
+      internalID: -509515778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_23
+      name: ball_light 1_23
       rect:
         serializedVersion: 2
         x: 1150
@@ -602,14 +602,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4148c113f7f3612409fa3a7e023b1d15
-      internalID: 2114611907
+      spriteID: 06a88c97d0c0dec4381cecba120e7ec3
+      internalID: -1136889949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_24
+      name: ball_light 1_24
       rect:
         serializedVersion: 2
         x: 1200
@@ -623,14 +623,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 305051ba05163ba41b15aa6c42267dcf
-      internalID: 472504406
+      spriteID: 50cd56cff7aeab64c81d3ef8307f1259
+      internalID: 68322337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_25
+      name: ball_light 1_25
       rect:
         serializedVersion: 2
         x: 1250
@@ -644,14 +644,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 095ff6b3cdbe4bc40ae0e2baeb8371c7
-      internalID: 1576057138
+      spriteID: c96b6792fde14fe4c9f7e45076526cdc
+      internalID: -1435972632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_26
+      name: ball_light 1_26
       rect:
         serializedVersion: 2
         x: 1300
@@ -665,14 +665,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a81613df0e963547ba311db00d5ceb0
-      internalID: 1935915656
+      spriteID: 1a309cc37f13d0b4caca517f5731d404
+      internalID: 928532307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_27
+      name: ball_light 1_27
       rect:
         serializedVersion: 2
         x: 1350
@@ -686,14 +686,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28ef3d4a3471f724b974316dc3ab3ca7
-      internalID: 924740538
+      spriteID: a9a5015d9765f0b4cb75f65fa5e47673
+      internalID: 233479597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_28
+      name: ball_light 1_28
       rect:
         serializedVersion: 2
         x: 1400
@@ -707,14 +707,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9280caa728fef0043b9a76b06bf91c3a
-      internalID: 140542094
+      spriteID: b72119dcb1a567240af01a62d975f830
+      internalID: -1798388999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: magic_light_50x50_29
+      name: ball_light 1_29
       rect:
         serializedVersion: 2
         x: 1450
@@ -728,113 +728,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbe1663a3354c0b4a9eacd4f261e6901
-      internalID: -1051686292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magic_light_50x50_30
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbd4934c234bb604c8235cba2688bb10
-      internalID: 205363695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magic_light_50x50_31
-      rect:
-        serializedVersion: 2
-        x: 1550
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71e5349e4449a2240bbd0d2f83d62e20
-      internalID: 1570373711
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magic_light_50x50_32
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a570b5ecc80cec4f9680d50344672b8
-      internalID: 1049546001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magic_light_50x50_33
-      rect:
-        serializedVersion: 2
-        x: 1650
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eebe9a7dedce8544fad784e262733c8c
-      internalID: 416940925
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magic_light_50x50_34
-      rect:
-        serializedVersion: 2
-        x: 1700
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd6cd539592af4944bfe23e0f6a56ed2
-      internalID: 1097738653
+      spriteID: e8c03109d2e043e4caf9404ad584e0aa
+      internalID: 1731019274
       vertices: []
       indices: 
       edges: []
@@ -850,41 +745,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      magic_light_50x50_0: -302196755
-      magic_light_50x50_1: -672215467
-      magic_light_50x50_10: -1903777834
-      magic_light_50x50_11: -1142463930
-      magic_light_50x50_12: -640777478
-      magic_light_50x50_13: 1796082380
-      magic_light_50x50_14: -510649992
-      magic_light_50x50_15: 2033311107
-      magic_light_50x50_16: 976528770
-      magic_light_50x50_17: -1584296752
-      magic_light_50x50_18: -464226471
-      magic_light_50x50_19: -752537356
-      magic_light_50x50_2: 1522035253
-      magic_light_50x50_20: 2048577802
-      magic_light_50x50_21: 1600919187
-      magic_light_50x50_22: 1592184977
-      magic_light_50x50_23: 2114611907
-      magic_light_50x50_24: 472504406
-      magic_light_50x50_25: 1576057138
-      magic_light_50x50_26: 1935915656
-      magic_light_50x50_27: 924740538
-      magic_light_50x50_28: 140542094
-      magic_light_50x50_29: -1051686292
-      magic_light_50x50_3: -1535037952
-      magic_light_50x50_30: 205363695
-      magic_light_50x50_31: 1570373711
-      magic_light_50x50_32: 1049546001
-      magic_light_50x50_33: 416940925
-      magic_light_50x50_34: 1097738653
-      magic_light_50x50_4: -1792618872
-      magic_light_50x50_5: -485341003
-      magic_light_50x50_6: 1190228359
-      magic_light_50x50_7: 401614848
-      magic_light_50x50_8: -1613754757
-      magic_light_50x50_9: -156227721
+      ball_light 1_0: -1805938079
+      ball_light 1_1: 1754327158
+      ball_light 1_10: 2040548070
+      ball_light 1_11: -1446020887
+      ball_light 1_12: 1675999964
+      ball_light 1_13: -1864847870
+      ball_light 1_14: 1783127554
+      ball_light 1_15: 259857596
+      ball_light 1_16: 825174319
+      ball_light 1_17: 1036320368
+      ball_light 1_18: 752652080
+      ball_light 1_19: -83563494
+      ball_light 1_2: -340966266
+      ball_light 1_20: 1828208629
+      ball_light 1_21: 2083446068
+      ball_light 1_22: -509515778
+      ball_light 1_23: -1136889949
+      ball_light 1_24: 68322337
+      ball_light 1_25: -1435972632
+      ball_light 1_26: 928532307
+      ball_light 1_27: 233479597
+      ball_light 1_28: -1798388999
+      ball_light 1_29: 1731019274
+      ball_light 1_3: -1230671932
+      ball_light 1_4: -222633839
+      ball_light 1_5: 689870714
+      ball_light 1_6: -434081156
+      ball_light 1_7: -1923961861
+      ball_light 1_8: 291120358
+      ball_light 1_9: -158971353
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

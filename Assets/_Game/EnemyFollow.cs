@@ -19,6 +19,8 @@ public class EnemyFollow : MonoBehaviour
     void Start()
     {
         var agent = GetComponent<NavMeshAgent>();
+        target = FindObjectOfType<PlayerController>().transform;
+
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }

@@ -14,7 +14,7 @@ public class SpriteRotationHandler
 public class PlayerController : MonoBehaviour
 {
     private static readonly int AttackParam = Animator.StringToHash("attack");
-    private static readonly int IsWalkParam = Animator.StringToHash("isWalk");
+    private static readonly int IsWalkParam = Animator.StringToHash("isWalking");
     private static readonly int IsDieParam = Animator.StringToHash("isDie");
     private static readonly int TakeDamageParam = Animator.StringToHash("takeDamage");
 
@@ -139,16 +139,20 @@ public class PlayerController : MonoBehaviour
         {
             _currentTottem.TriggerPlayerRecharged(this, true);
 
-            var tottemDir = (transform.position - _currentTottem.transform.position).normalized;
+            var tottemDir = (_currentTottem.transform.position - transform.position).normalized;
 
             playerAnimator.SetFloat(TottemDirectionXParam, tottemDir.x);
             playerAnimator.SetFloat(TottemDirectionYParam, tottemDir.y);
+
+            playerAnimator.SetBool(IsRechargingTottemParam, true);
 
             RemoveBulletsConstantly();
         }
         else if (_currentTottem)
         {
             _currentTottem.TriggerPlayerRecharged(this, false);
+
+            playerAnimator.SetBool(IsRechargingTottemParam, false);
         }
     }
 
@@ -220,7 +224,13 @@ public class PlayerController : MonoBehaviour
     public bool HasBullets() => currentBullets > 0;
 
     public bool IsPressingRechargeKey() => _inputReference.RechargeTottemButton.IsPressed;
-    public bool IsRechargingTottem() => IsPressingRechargeKey() && _currentTottem != null && HasBullets();
+    public bool IsRechargingTottem()
+    {
+        if (_currentTottem != null && _currentTottem.IsSubTotem() && _currentTottem.IsValidTotem())
+            return false;
+
+        return _currentTottem != null & IsPressingRechargeKey() && HasBullets() && !_currentTottem.IsCompletedTottem;
+    }
 
     private void PauseInputTrigger()
     {
@@ -347,8 +357,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimator()
     {
         playerAnimator.SetBool(IsWalkParam, _rigidbody2D.velocity != new Vector2(0, 0));
-        playerAnimator.SetBool(IsRechargingTottemParam, IsRechargingTottem());
-
+     
         if (!IsMoving())
             return;
 
