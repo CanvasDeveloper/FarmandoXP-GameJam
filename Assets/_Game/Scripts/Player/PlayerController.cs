@@ -76,6 +76,8 @@ public class PlayerController : MonoBehaviour
     private bool hasStartTriggerAudio = false;
     private bool hasEndTriggerAudio = false;
 
+    FMOD.Studio.EventInstance instance;
+
     private void Awake()
     {
         _inputReference = GetComponent<InputReference>();
@@ -155,7 +157,8 @@ public class PlayerController : MonoBehaviour
             {
                 hasStartTriggerAudio = true;
 
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Cast Start", transform.position);
+                instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Fada/Cast Start");
+                instance.start();
             }
 
             hasEndTriggerAudio = false;
@@ -170,6 +173,8 @@ public class PlayerController : MonoBehaviour
             {
                 hasEndTriggerAudio = true;
 
+                instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                instance.release();
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Cast End", transform.position);
             }
 
