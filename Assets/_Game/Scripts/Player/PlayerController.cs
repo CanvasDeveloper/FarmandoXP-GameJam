@@ -42,10 +42,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float waitForAnimation = 0.2f;
-    [SerializeField] private int maxBullets = 10;
+    [SerializeField] private float maxBullets = 10;
+    [SerializeField] private float requiredToShoot = 1;
     [SerializeField] public float delayToReload = 0.2f;
 
-    [SerializeField] private int currentBullets = 0;
+    [Header("Bullets Recover")]
+    [SerializeField] private float percent = 0.2f;
+
+    [SerializeField] private float currentBullets = 0;
     [SerializeField] private float removingBulletsDelay = 0.5f;
 
     [Header("Gun Pivots")]
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private float _timeStopped;
     private float _timeRemovingBullets;
+    private float _timeRecoveringBullets;
 
     private InputReference _inputReference;
     private Rigidbody2D _rigidbody2D;
@@ -119,6 +124,7 @@ public class PlayerController : MonoBehaviour
         if (IsRechargingTottem())
             return;
 
+        AutoRecoverMana();
         ShootInputTrigger();
 
         if (!IsMoving())
@@ -126,6 +132,17 @@ public class PlayerController : MonoBehaviour
 
         DashInpuTrigger();
         UpdateGunRotation();
+    }
+
+    private void AutoRecoverMana()
+    {
+        _timeRecoveringBullets += Time.deltaTime;
+
+        if(_timeRecoveringBullets > 1)
+        {
+            currentBullets += (percent * maxBullets);
+            _timeRecoveringBullets = 0;
+        }
     }
 
     private void RechargingInputTrigger()
