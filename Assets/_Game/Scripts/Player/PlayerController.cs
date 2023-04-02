@@ -117,19 +117,18 @@ public class PlayerController : MonoBehaviour
 
         RechargingInputTrigger();
         
-        UpdatePlayerScale();
-
-        UpdateAnimator();
-
         if (IsRechargingTottem())
             return;
 
         AutoRecoverMana();
         ShootInputTrigger();
 
+        UpdateAnimator();
+        
         if (!IsMoving())
             return;
 
+        UpdatePlayerScale();
         DashInpuTrigger();
         UpdateGunRotation();
     }
@@ -320,9 +319,9 @@ public class PlayerController : MonoBehaviour
     {
         _timeRecoveringBullets += Time.deltaTime;
 
-        if (_timeRecoveringBullets > 1)
+        if (_timeRecoveringBullets > 0.5f)
         {
-            AddMana(percent * maxBullets);
+            AddMana((percent * maxBullets)/2);
 
             _timeRecoveringBullets = 0;
         }

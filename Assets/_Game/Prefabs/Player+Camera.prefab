@@ -566,9 +566,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: -4680066072051886476, guid: cc3e7ae6be7a6d24295d9b3aac6b2a39, type: 3}
   gunPivot: {fileID: 1409434287912679638}
   bulletSpeed: 8
-  waitForAnimation: 0.1
+  waitForAnimation: 0.2
   maxBullets: 10
-  delayToReload: 0.5
+  requiredToShoot: 1
+  delayToReload: 0.1
+  percent: 0.05
   currentBullets: 0
   removingBulletsDelay: 0.25
   gunDownLocation: {fileID: 1552521749780478918}
