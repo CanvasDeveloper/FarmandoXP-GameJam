@@ -19,6 +19,9 @@ public class UIGameplay : MonoBehaviour
     [SerializeField] private GameObject pausePanel;            
     [SerializeField] private GameObject gameoverPanel;
 
+    [SerializeField] private Button firstButtonPause;
+    [SerializeField] private Button firstButtonGameOver;
+
     private HealthSystem healthSystem;
     private PlayerController playerController;
 
@@ -65,6 +68,7 @@ public class UIGameplay : MonoBehaviour
     {
         DisableAllMenus();
 
+        firstButtonPause.Select();
         pausePanel.SetActive(value);
     }
 
@@ -72,6 +76,7 @@ public class UIGameplay : MonoBehaviour
     {
         DisableAllMenus();
 
+        firstButtonGameOver.Select();
         gameoverPanel.SetActive(true);
     }
 
