@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour
     private IDamageable _health;
     private Tottem _currentTottem;
 
+    private bool hasStartTriggerAudio = false;
+    private bool hasEndTriggerAudio = false;
+
     private void Awake()
     {
         _inputReference = GetComponent<InputReference>();
@@ -147,12 +150,30 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool(IsRechargingTottemParam, true);
 
             RemoveBulletsConstantly();
+
+            if (!hasStartTriggerAudio)
+            {
+                hasStartTriggerAudio = true;
+
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Cast Start", transform.position);
+            }
+
+            hasEndTriggerAudio = false;
         }
         else if (_currentTottem)
         {
             _currentTottem.TriggerPlayerRecharged(this, false);
 
             playerAnimator.SetBool(IsRechargingTottemParam, false);
+
+            if (hasEndTriggerAudio)
+            {
+                hasEndTriggerAudio = true;
+
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Cast End", transform.position);
+            }
+
+            hasStartTriggerAudio = false;
         }
     }
 
