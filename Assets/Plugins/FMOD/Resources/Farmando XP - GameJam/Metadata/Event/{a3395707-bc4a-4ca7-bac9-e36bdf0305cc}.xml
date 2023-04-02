@@ -64,7 +64,7 @@
 	<object class="MarkerTrack" id="{0e353052-7c4a-498c-b7ef-d99e4b84f48e}" />
 	<object class="GroupTrack" id="{c9573e1e-22cd-4c0a-a1d7-806aff8b5538}">
 		<relationship name="modules">
-			<destination>{56c36f29-d55c-48f7-b00e-1afec035efaa}</destination>
+			<destination>{43cd3875-b72e-4875-b0ec-c4e25b114336}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{ca53ed73-068d-4256-9d78-5805069bc1c2}</destination>
@@ -72,7 +72,7 @@
 	</object>
 	<object class="Timeline" id="{ac10c437-1168-4eb4-a9b1-6fb11628e636}">
 		<relationship name="modules">
-			<destination>{56c36f29-d55c-48f7-b00e-1afec035efaa}</destination>
+			<destination>{43cd3875-b72e-4875-b0ec-c4e25b114336}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{131a6be3-9b3c-4d1a-b2f9-cbab0566bb92}</destination>
@@ -98,7 +98,7 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c9148547-f636-46e7-a2bd-47a496098289}" />
-	<object class="SingleSound" id="{56c36f29-d55c-48f7-b00e-1afec035efaa}">
+	<object class="SingleSound" id="{43cd3875-b72e-4875-b0ec-c4e25b114336}">
 		<property name="isAsync">
 			<value>true</value>
 		</property>
@@ -112,10 +112,10 @@
 			<value>true</value>
 		</property>
 		<relationship name="modulators">
-			<destination>{a686841e-1f0f-4c35-90ca-3994b8fc160b}</destination>
+			<destination>{bcd4f76f-43f7-4bc6-9c46-49aeacb56c9d}</destination>
 		</relationship>
 		<relationship name="audioFile">
-			<destination>{cad20b1e-05ee-4011-9c9b-93d30eb6690a}</destination>
+			<destination>{14237939-f876-4388-a98a-7f8338d8be01}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ca53ed73-068d-4256-9d78-5805069bc1c2}">
@@ -165,7 +165,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{e55b4a49-01dd-4b33-8920-a7666deb6f00}" />
 	<object class="MixerBusFader" id="{b26e71e1-bb17-4aa4-825e-cfd2dc29613e}" />
-	<object class="RandomizerModulator" id="{a686841e-1f0f-4c35-90ca-3994b8fc160b}">
+	<object class="RandomizerModulator" id="{bcd4f76f-43f7-4bc6-9c46-49aeacb56c9d}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>startOffset</value>
 		</property>
