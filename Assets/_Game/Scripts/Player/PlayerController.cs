@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
             playerAnimator.SetBool(IsRechargingTottemParam, false);
 
-            if (hasEndTriggerAudio)
+            if (!hasEndTriggerAudio)
             {
                 hasEndTriggerAudio = true;
 
