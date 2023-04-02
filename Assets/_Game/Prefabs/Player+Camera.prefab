@@ -532,8 +532,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.32848167}
-  m_Size: {x: 0.8384454, y: 1.2981718}
+  m_Offset: {x: 0, y: -0.63604105}
+  m_Size: {x: 0.5308333, y: 0.6401861}
   m_Direction: 0
 --- !u!114 &6579058094610347720
 MonoBehaviour:
@@ -758,6 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customPivot: {fileID: 4540578034028608491}
+  offset: 2
 --- !u!114 &3182997233592741114
 MonoBehaviour:
   m_ObjectHideFlags: 0

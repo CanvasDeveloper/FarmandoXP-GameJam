@@ -24,7 +24,8 @@ public class Tottem : MonoBehaviour
     #region PRIVATE VARIABLES
 
     private bool _isRecharging; // INDICA SE O PLAYER ESTÁ CARREGANDO O TOTEM
-    private bool _isCompletedTottem;
+    public bool IsCompletedTottem { get; private set; }
+    
     [SerializeField] private float _RechargeValueBySecond; //CONFIGRAR O TEMPO GASTO DE CARREGAR O TOTEM
 
     [SerializeField] private float startYValue = 1;
@@ -73,7 +74,7 @@ public class Tottem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isCompletedTottem)
+        if (IsCompletedTottem)
             return;
 
         if (_isRecharging == false)
@@ -97,11 +98,14 @@ public class Tottem : MonoBehaviour
         _isRecharging = isRecharged;
     }
 
+    public bool IsValidTotem() => TottemManager.Instance.CheckSubTottem(colorTottem);
+    public bool IsSubTotem() => isSubTottem;
+
     private void UpdateRecharge()
     {
-        if (isSubTottem)
+        if (IsSubTotem())
         {
-            bool isValid = TottemManager.Instance.CheckSubTottem(colorTottem);
+            bool isValid = IsValidTotem();
             if (isValid == false)
                 return;
 
@@ -123,7 +127,7 @@ public class Tottem : MonoBehaviour
             if (amountSlotCompleted == SlotColors.Count)
             {
                 TottemManager.OnTottemRecharged?.Invoke(colorTottem); // TOTEM COMPLETO;
-                _isCompletedTottem = true;
+                IsCompletedTottem = true;
                 return;
             }
         }

@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3362429a0cec149931a1658a10f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customPivot: {fileID: 0}
+  customPivot: {fileID: 1703202240074557687}
+  offsetZposition: -0.3
 --- !u!1 &4297751113953858337
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028942585, y: -0.07235634}
+  m_Offset: {x: -0.028942585, y: -0.0012432337}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -154,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8875723, y: 1.1447127}
+  m_Size: {x: 1.8875723, y: 1.2869389}
   m_EdgeRadius: 0
 --- !u!1 &4297751114000564208
 GameObject:
@@ -253,7 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3362429a0cec149931a1658a10f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customPivot: {fileID: 0}
+  customPivot: {fileID: 1703202240074557687}
+  offsetZposition: -0.3
 --- !u!1 &4297751114114999341
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1615f8c939874e44faf72ed7e710ea35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorTottem: 2
+  colorTottem: 1
   isSubTottem: 0
   SlotColors:
   - {fileID: 4297751114928132295}
@@ -465,7 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3362429a0cec149931a1658a10f67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customPivot: {fileID: 0}
+  customPivot: {fileID: 1703202240074557687}
+  offsetZposition: -0.3
 --- !u!1 &7546317693773932752
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,3 +601,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customPivot: {fileID: 1703202240074557687}
+  offsetZposition: 0
