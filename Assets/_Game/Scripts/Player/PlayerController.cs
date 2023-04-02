@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int DashParam = Animator.StringToHash("dash");
     private static readonly int DirectionXParam = Animator.StringToHash("directionX");
     private static readonly int DirectionYParam = Animator.StringToHash("directionY");
+    private static readonly int IsRechargingTottemParam = Animator.StringToHash("isRechargingTottem");
 
     public event Action<float, float> OnTriggerShootEvent; //current / max
 
@@ -33,13 +34,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Bullets")]
     public BulletController bulletPrefab;
-
     [SerializeField] private Transform gunPivot;
-
-    [Header("Gun Pivots")]
-    [SerializeField] private Transform gunDownLocation;
-    [SerializeField] private Transform gunUpLocation;
-    [SerializeField] private Transform gunSideLocation;
 
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float waitForAnimation = 0.2f;
@@ -48,6 +43,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int currentBullets = 0;
     [SerializeField] private float removingBulletsDelay = 0.5f;
+
+    [Header("Gun Pivots")]
+    [SerializeField] private Transform gunDownLocation;
+    [SerializeField] private Transform gunUpLocation;
+    [SerializeField] private Transform gunSideLocation;
 
     private bool _isCanShoot = true;
     private bool _isDashing = false;
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
 
     private IDamageable _health;
+    private Tottem _currentTottem;
 
     private void Awake()
     {
@@ -102,25 +103,24 @@ public class PlayerController : MonoBehaviour
 
         _targetDirection = _inputReference.Movement;
 
-        if (_targetDirection != Vector2.zero && !_isTriggeredMovementAudio)
-        {
-            _timeStopped = 0f;
-            _isTriggeredMovementAudio = true;
-            TriggerAudio();
-        }
-
-        if (_targetDirection == Vector2.zero)
-        {
-            _timeStopped += Time.deltaTime;
-
-            if(_timeStopped > 0.2f)
-                _isTriggeredMovementAudio = false;
-        }
-
-        ShootInputTrigger();
+        TriggerOnWalkAudio();
+        CalculateStoppedTime();
 
         UpdateAnimator();
 
+        if (IsRechargingTottem())
+        {
+            _currentTottem.TriggerPlayerRecharged(this, true);
+            RemoveBullets();
+            return;
+        }
+
+        if (_currentTottem)
+        {
+            _currentTottem.TriggerPlayerRecharged(this, false);
+        }
+
+        ShootInputTrigger();
 
         if (!IsMoving())
             return;
@@ -131,20 +131,44 @@ public class PlayerController : MonoBehaviour
         UpdatePlayerScale();
     }
 
-    private void TriggerAudio()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Wings", transform.position);
-    }
-
     private void FixedUpdate()
     {
         if (_health.IsDie)
             return;
 
-        if(_isDashing)
+        if (IsRechargingTottem())
+            _rigidbody2D.velocity = Vector2.zero;
+
+        if (_isDashing)
             return;
 
         _rigidbody2D.velocity = _targetDirection * moveSpeed;
+    }
+
+    private void TriggerOnWalkAudio()
+    {
+        if (_targetDirection != Vector2.zero && !_isTriggeredMovementAudio)
+        {
+            _timeStopped = 0f;
+            _isTriggeredMovementAudio = true;
+            TriggerAudio();
+        }
+    }
+
+    private void TriggerAudio()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Wings", transform.position);
+    }
+
+    private void CalculateStoppedTime()
+    {
+        if (_targetDirection == Vector2.zero)
+        {
+            _timeStopped += Time.deltaTime;
+
+            if (_timeStopped > 0.2f)
+                _isTriggeredMovementAudio = false;
+        }
     }
 
     private bool IsMoving() => _targetDirection != Vector2.zero;
@@ -154,11 +178,11 @@ public class PlayerController : MonoBehaviour
         transform.localScale = new Vector3(Mathf.Sign(_targetDirection.x), 1, 1);
     }
 
+    #region GUNPOSITION AND ROTATION
+
     public void UpdateToDown() => UpdateGunPosition(gunDownLocation.position);
     public void UpdateToUp() => UpdateGunPosition(gunUpLocation.position);
     public void UpdateToSide() => UpdateGunPosition(gunSideLocation.position);
-
-    public bool HasBullets() => currentBullets > 0;
 
     public void UpdateGunPosition(Vector3 newPosition)
     {
@@ -169,6 +193,13 @@ public class PlayerController : MonoBehaviour
     {
         gunPivot.up = _targetDirection;
     }
+
+    #endregion
+
+    public bool HasBullets() => currentBullets > 0;
+
+    public bool IsPressingRechargeKey() => _inputReference.RechargeTottemButton.IsPressed;
+    public bool IsRechargingTottem() => IsPressingRechargeKey() && _currentTottem != null && HasBullets();
 
     private void PauseInputTrigger()
     {
@@ -255,6 +286,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetTottem(Tottem tottem)
+    {
+        _currentTottem = tottem;
+    }
+
+    #region ANIMATION
+
     private void ChangeToDieAnimation(IDamageable value)
     {
         playerAnimator.SetBool(IsDieParam, true);
@@ -268,6 +306,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimator()
     {
         playerAnimator.SetBool(IsWalkParam, _rigidbody2D.velocity != new Vector2(0, 0));
+        playerAnimator.SetBool(IsRechargingTottemParam, IsRechargingTottem());
 
         if (!IsMoving())
             return;
@@ -276,5 +315,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetFloat(DirectionYParam, _targetDirection.y);
     }
 
-   
+    #endregion
+
+    
 }

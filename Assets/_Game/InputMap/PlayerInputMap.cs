@@ -71,6 +71,15 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recharge"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d61fa9a-1ae3-4833-a604-b6297a3cc597"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -315,6 +324,28 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""014d15cf-65e6-4487-ab40-12bd4a08e376"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard + mouse"",
+                    ""action"": ""Recharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d52f9086-e416-498f-acc0-22c6fccd5ab7"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""gamepad"",
+                    ""action"": ""Recharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -356,6 +387,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
+        m_Gameplay_Recharge = m_Gameplay.FindAction("Recharge", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -422,6 +454,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_MousePosition;
     private readonly InputAction m_Gameplay_Dash;
+    private readonly InputAction m_Gameplay_Recharge;
     public struct GameplayActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -431,6 +464,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
         public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
+        public InputAction @Recharge => m_Wrapper.m_Gameplay_Recharge;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -455,6 +489,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Recharge.started += instance.OnRecharge;
+            @Recharge.performed += instance.OnRecharge;
+            @Recharge.canceled += instance.OnRecharge;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -474,6 +511,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Recharge.started -= instance.OnRecharge;
+            @Recharge.performed -= instance.OnRecharge;
+            @Recharge.canceled -= instance.OnRecharge;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -516,5 +556,6 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnRecharge(InputAction.CallbackContext context);
     }
 }

@@ -80,12 +80,6 @@ public class Tottem : MonoBehaviour
         if (_isRecharging == false)
             return;
 
-        if (currentPlayerController)
-            currentPlayerController.RemoveBullets();
-
-        if (currentPlayerController && !currentPlayerController.HasBullets())
-            return;
-
         UpdateRecharge();
     }
 

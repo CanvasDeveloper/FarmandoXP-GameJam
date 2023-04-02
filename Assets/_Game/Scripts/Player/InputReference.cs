@@ -21,6 +21,7 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
     public InputButton PauseButton { get; private set; } = new InputButton();
     public InputButton ShootButton { get; private set; } = new InputButton();
     public InputButton DashButton { get; private set; } = new InputButton();
+    public InputButton RechargeTottemButton { get; private set; } = new InputButton();
 
     private PlayerInputMap playerInputs;
 
@@ -68,6 +69,11 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         StartCoroutine(ResetButton(DashButton));
     }
 
+    public void OnRecharge(InputAction.CallbackContext context)
+    {
+        DashButton.IsPressed = context.ReadValueAsButton();
+    }
+
     private IEnumerator ResetButton(InputButton button)
     {
         yield return new WaitForEndOfFrame();
@@ -75,6 +81,4 @@ public class InputReference : MonoBehaviour, PlayerInputMap.IGameplayActions
         if (button.IsPressed)
             button.IsPressed = false;
     }
-
-    
 }

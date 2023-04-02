@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TesteColliderTottem : MonoBehaviour
@@ -18,7 +16,10 @@ public class TesteColliderTottem : MonoBehaviour
 
         if(collision.tag == "RechargeTottem")
         {
-            collision.transform.parent.GetComponent<Tottem>().TriggerPlayerRecharged(controller, true); //OnPlayerRecharged?.Invoke(true);
+            var tottem = collision.transform.parent.GetComponent<Tottem>();
+
+            //tottem.TriggerPlayerRecharged(controller, true); //OnPlayerRecharged?.Invoke(true);
+            controller.SetTottem(tottem);
         }
     }
 
@@ -26,7 +27,10 @@ public class TesteColliderTottem : MonoBehaviour
     {
         if (collision.tag == "RechargeTottem")
         {
-            collision.transform.parent.GetComponent<Tottem>().TriggerPlayerRecharged(controller, false); //OnPlayerRecharged?.Invoke(false);
+            var tottem = collision.transform.parent.GetComponent<Tottem>();
+
+            tottem.TriggerPlayerRecharged(controller, false); //OnPlayerRecharged?.Invoke(false);
+            controller.SetTottem(null);
         }
     }
 
