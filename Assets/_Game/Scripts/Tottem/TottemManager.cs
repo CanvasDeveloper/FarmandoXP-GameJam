@@ -52,30 +52,6 @@ public class TottemManager : Singleton<TottemManager>
                 Debug.LogFormat($"<color={item.tottemColor}>{item.tottemColor.ToString().ToUpper()}!!!!</color>");
             }
         }
-
-        //switch (tottem)     
-        //{
-        //    case ColorTottemEnum.Red:
-        //        Debug.LogFormat("<color=red>VERMELHO!!!!</color>");
-        //        break;
-        //    case ColorTottemEnum.Green:
-        //        Debug.LogFormat("<color=green>VERDE!!!!</color>");
-        //        break;
-        //    case ColorTottemEnum.Blue:
-        //        Debug.LogFormat("<color=blue>AZUL!!!!</color>");
-        //        break;
-        //    case ColorTottemEnum.Cyan:
-        //        Debug.LogFormat("<color=cyan>CIANO!!!!</color>");
-        //        break;
-        //    case ColorTottemEnum.Magenta:
-        //        Debug.LogFormat("<color=magenta>MAGENTA!!!!</color>");
-        //        break;
-        //    case ColorTottemEnum.Yellow:
-        //        Debug.LogFormat("<color=yellow>AMARELO!!!!</color>");
-        //        break;
-        //    default:
-        //        break;
-        //}
     }
 
     public bool CheckSubTottem(ColorTottemEnum tottem)
@@ -101,13 +77,15 @@ public class TottemManager : Singleton<TottemManager>
     {
         bool hasColor1 = false;
         bool hasColor2 = false;
+
         foreach (var tottem in listTottemProgress)
         {
             if(tottem.tottemColor == color1 && tottem.isCompleted)
             {
                 hasColor1 = true;
             }
-            else if (tottem.tottemColor == color2 && tottem.isCompleted)
+
+            if (tottem.tottemColor == color2 && tottem.isCompleted)
             {
                 hasColor2 = true;
             }

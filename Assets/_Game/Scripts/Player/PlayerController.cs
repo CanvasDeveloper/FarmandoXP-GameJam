@@ -263,10 +263,25 @@ public class PlayerController : MonoBehaviour
     public bool IsPressingRechargeKey() => _inputReference.RechargeTottemButton.IsPressed;
     public bool IsRechargingTottem()
     {
-        if (_currentTottem != null && _currentTottem.IsSubTotem() && _currentTottem.IsValidTotem())
+        if(!HasBullets() || !IsPressingRechargeKey())
             return false;
 
-        return _currentTottem != null & IsPressingRechargeKey() && HasBullets() && !_currentTottem.IsCompletedTottem;
+        if(_currentTottem != null)
+        {
+            if(_currentTottem.IsSubTotem())
+            {
+                return _currentTottem.IsValidTotem();
+            }
+            else
+            {
+                return !_currentTottem.IsCompletedTottem;
+            }
+        }
+        else
+        { 
+            return false; 
+        }
+
     }
 
     private void PauseInputTrigger()

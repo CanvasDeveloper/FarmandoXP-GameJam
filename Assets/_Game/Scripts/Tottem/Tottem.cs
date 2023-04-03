@@ -114,12 +114,9 @@ public class Tottem : MonoBehaviour
 
     private void UpdateRecharge()
     {
-        if (IsSubTotem())
+        if (IsSubTotem() && !IsValidTotem())
         {
-            bool isValid = IsValidTotem();
-            if (isValid == false)
-                return;
-
+            return;
         }
         
         SpriteRenderer current = null;
@@ -139,8 +136,10 @@ public class Tottem : MonoBehaviour
             {
                 TottemManager.OnTottemRecharged?.Invoke(colorTottem); // TOTEM COMPLETO;
                 IsCompletedTottem = true;
+
                 ChargingSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 ChargingSound.release();
+
                 switch (colorTottem)
                 {
                     case ColorTottemEnum.Yellow:
