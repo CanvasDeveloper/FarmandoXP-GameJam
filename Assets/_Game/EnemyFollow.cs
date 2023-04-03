@@ -85,6 +85,9 @@ public class EnemyFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.cutscene)
+            return;
+
         if (_isStunned)
             return;
 

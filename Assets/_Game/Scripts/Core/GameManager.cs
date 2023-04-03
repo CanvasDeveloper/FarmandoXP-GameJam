@@ -1,17 +1,43 @@
 using UnityEngine;
 using System;
+using UnityEngine.Playables;
 
 public class GameManager : Singleton<GameManager>
 {
     public event Action<bool> OnPauseStatusChange;
     public event Action OnGameOver;
     public event Action OnGameWin;
+
+    public PlayableDirector cutsceneFinal;
+
+    public bool cutscene;
     public bool Paused { get; private set; }
 
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+    }
+
+    private void OnEnable()
+    {
+        TottemManager.OnAllTotemsComplete += ActiveCutscene;
+    }
+
+    private void ActiveCutscene()
+    {
+        cutscene = true;
+        cutsceneFinal.Play();
+    }
+
+    public void FinishCutscene()
+    {
+        cutsceneFinal.stopped += (delegate { cutscene = false; });
+    }
+
+    private void OnDisable()
+    {
+        TottemManager.OnAllTotemsComplete -= ActiveCutscene;
     }
 
     /// <summary>
