@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         _inputReference = GetComponent<InputReference>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         _health = GetComponent<IDamageable>();
     }
