@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
-    private ObjectPooler pooler;
+    protected ObjectPooler pooler;
 
-    [SerializeField] private string spawnablesTag = "Collectables";
+    [SerializeField] protected string spawnablesTag = "Collectables";
     
-    [SerializeField] private SpawnPoint[] spawnPoints;
+    [SerializeField] protected SpawnPoint[] spawnPoints;
     [SerializeField] private int initialAmount = 5;
 
     protected override void Awake()
@@ -34,7 +34,7 @@ public class SpawnManager : Singleton<SpawnManager>
     }
 
     [ContextMenu("TestSpawn")]
-    private void Spawn()
+    protected virtual void Spawn()
     {
         var avaliableSpawners = new List<SpawnPoint>();
 
