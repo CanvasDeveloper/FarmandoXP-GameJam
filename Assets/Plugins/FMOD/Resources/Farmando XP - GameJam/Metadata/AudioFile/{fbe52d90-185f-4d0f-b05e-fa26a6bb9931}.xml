@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{fbe52d90-185f-4d0f-b05e-fa26a6bb9931}">
+		<property name="assetPath">
+			<value>Priest Projectile Impact A.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.4644583333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b9d59c25-4077-4fb4-a32f-05c357b7907f}</destination>
+		</relationship>
+	</object>
+</objects>
