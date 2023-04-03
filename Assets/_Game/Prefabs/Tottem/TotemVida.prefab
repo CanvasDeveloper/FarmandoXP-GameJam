@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 864444200117563348}
   - component: {fileID: 864444200117563349}
   - component: {fileID: 864444200117563346}
+  - component: {fileID: 1151203904429143422}
   m_Layer: 0
   m_Name: TotemVida
   m_TagString: Untagged
@@ -128,6 +129,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPivot: {fileID: 864444201999673633}
   offsetZposition: 0
+--- !u!208 &1151203904429143422
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864444200117563347}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.609, y: 0.95300007, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &864444200820294110
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +188,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.73899245}
