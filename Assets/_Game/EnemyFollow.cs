@@ -85,7 +85,7 @@ public class EnemyFollow : MonoBehaviour
         if (_isStunned)
             return;
 
-        if (target)
+        if (!target)
             return;
 
         agent.SetDestination(target.position);
