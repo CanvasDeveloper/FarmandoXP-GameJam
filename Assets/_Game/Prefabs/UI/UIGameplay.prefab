@@ -723,15 +723,15 @@ MonoBehaviour:
   totenImage:
   - color: 0
     image: {fileID: 5109199426368026064}
-  - color: 0
+  - color: 5
     image: {fileID: 1115634454275241700}
-  - color: 0
+  - color: 3
     image: {fileID: 3548845027771403656}
-  - color: 0
+  - color: 4
     image: {fileID: 6884283011633027585}
-  - color: 0
+  - color: 1
     image: {fileID: 5415439042199040689}
-  - color: 0
+  - color: 2
     image: {fileID: 4738720031140859865}
   pausePanel: {fileID: 8849387895161189841}
   gameoverPanel: {fileID: 5570352115289391345}
