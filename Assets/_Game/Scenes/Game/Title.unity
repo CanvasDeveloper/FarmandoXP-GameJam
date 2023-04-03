@@ -717,7 +717,7 @@ PrefabInstance:
     - target: {fileID: 1429172837084678638, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8001300188118957953}
+      objectReference: {fileID: 0}
     - target: {fileID: 1429172837084678638, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -869,7 +869,7 @@ PrefabInstance:
     - target: {fileID: 4313554965346287061, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8001300188118957954}
+      objectReference: {fileID: 0}
     - target: {fileID: 4313554965346287061, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1086,42 +1086,6 @@ PrefabInstance:
     - {fileID: 5625716085610518256, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
     - {fileID: 4400598597669858517, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
---- !u!1 &8001300188118957951 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3431660152511717418, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
-  m_PrefabInstance: {fileID: 8001300188118957950}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8001300188118957952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 546649446945215505, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
-  m_PrefabInstance: {fileID: 8001300188118957950}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8001300188118957953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8001300188118957951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d36cad8dd84e794ebf576ea7aaa67d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VCAName: SFX
---- !u!114 &8001300188118957954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8001300188118957952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d36cad8dd84e794ebf576ea7aaa67d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VCAName: Music
 --- !u!224 &8001300188118957955 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8001300187097076940, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
