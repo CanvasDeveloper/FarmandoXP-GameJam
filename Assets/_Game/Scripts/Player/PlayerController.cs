@@ -420,7 +420,7 @@ public class PlayerController : MonoBehaviour
     private void ChangeToTakeDamageAnimation(Vector3 value)
     {
         playerAnimator.SetTrigger(TakeDamageParam);
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Emo/Hit", transform.position);
         StopCoroutine(Blink());
         StartCoroutine(Blink());
     }
