@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 5.049999999999999
+    m_Start: 7.3833333333333275
     m_ClipIn: 0
     m_Asset: {fileID: 8738847148244026670}
     m_Duration: 4
@@ -122,7 +122,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 5.049999999999999
+    m_PreExtrapolationTime: 7.3833333333333275
     m_DisplayName: Portao-Cutscene
   m_Markers:
     m_Objects: []
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 1.5333333333333319
+    m_Start: 3.8666666666666623
     m_ClipIn: 0
     m_Asset: {fileID: -6085735450758577600}
     m_Duration: 1.5
@@ -232,7 +232,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 1.5333333333333319
+    m_PreExtrapolationTime: 3.8666666666666623
     m_DisplayName: fadeOut-cut
   m_Markers:
     m_Objects: []
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 2.3333333333333335
     m_ClipIn: 0
     m_Asset: {fileID: -5017343237762385621}
     m_Duration: 10
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 2.3333333333333335
     m_ClipIn: 0
     m_Asset: {fileID: 3508623049820427569}
     m_Duration: 10
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 2.3333333333333335
     m_ClipIn: 0
     m_Asset: {fileID: 7015509329916501041}
     m_Duration: 3.033333333333333
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 2.0666666666666655
+    m_Start: 4.399999999999995
     m_ClipIn: 0
     m_Asset: {fileID: 163359175192405257}
     m_Duration: 3
@@ -697,7 +697,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 2.0666666666666655
+    m_PreExtrapolationTime: 4.399999999999995
     m_DisplayName: CamCutScene
   m_Markers:
     m_Objects: []

@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     public event Action OnGameWin;
 
     public PlayableDirector cutsceneFinal;
+    public GameObject temploLevel;
 
     public bool cutscene;
     public bool Paused { get; private set; }
@@ -26,13 +27,16 @@ public class GameManager : Singleton<GameManager>
 
     private void ActiveCutscene()
     {
-        cutscene = true;
         cutsceneFinal.Play();
+        cutscene = true;
+        temploLevel.SetActive(false);
     }
 
     public void FinishCutscene()
-    {
-        cutsceneFinal.stopped += (delegate { cutscene = false; });
+    { 
+        cutscene = false;
+        temploLevel.SetActive(true);
+        cutsceneFinal.gameObject.SetActive(false);
     }
 
     private void OnDisable()
