@@ -26,7 +26,7 @@ public class Tottem : MonoBehaviour
 
     #region PRIVATE VARIABLES
 
-    private bool _isRecharging; // INDICA SE O PLAYER ESTÁ CARREGANDO O TOTEM
+    private bool _isRecharging; // INDICA SE O PLAYER ESTï¿½ CARREGANDO O TOTEM
     public bool IsCompletedTottem { get; private set; }
     
     [SerializeField] private float _RechargeValueBySecond; //CONFIGRAR O TEMPO GASTO DE CARREGAR O TOTEM
@@ -37,7 +37,7 @@ public class Tottem : MonoBehaviour
 
     #region EVENTS
 
-    public event Action<bool> OnPlayerRecharged; // quando player está carregando o totem com a luz
+    public event Action<bool> OnPlayerRecharged; // quando player estï¿½ carregando o totem com a luz
 
     #endregion EVENTS
 
@@ -68,9 +68,9 @@ public class Tottem : MonoBehaviour
         }
         for (int i = 0; i < SlotColors.Count; i++)
         {
-            SlotColors[i].size = new Vector2(SlotColors[i].size.x, light); //COMPLETA O TOTEM AUTOMÁTICO, OU NÃO
+            SlotColors[i].size = new Vector2(SlotColors[i].size.x, light); //COMPLETA O TOTEM AUTOMï¿½TICO, OU Nï¿½O
         }
-        //VERIFICA SE É UM SUBTOTEM
+        //VERIFICA SE ï¿½ UM SUBTOTEM
         if (colorTottem == ColorTottemEnum.Cyan || colorTottem == ColorTottemEnum.Magenta || colorTottem == ColorTottemEnum.Yellow)
             isSubTottem = true;
 

@@ -49,7 +49,7 @@ MonoBehaviour:
   - tottemColor: 0
     isCompleted: 0
   - tottemColor: 1
-    isCompleted: 1
+    isCompleted: 0
   - tottemColor: 2
     isCompleted: 0
   - tottemColor: 3
