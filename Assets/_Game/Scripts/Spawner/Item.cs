@@ -5,6 +5,8 @@ public class Item : MonoBehaviour
     [SerializeField] private float amount;
     private int index;
 
+    [SerializeField] private bool outOfSpawn;
+
     public void SetSpawnIndex(int i)
     {
         index = i;
@@ -15,8 +17,12 @@ public class Item : MonoBehaviour
         if(collision.TryGetComponent(out PlayerController player))
         {
             player.AddMana(amount);
-            SpawnManager.Instance.AddToAvaliable(index);
 
+            if(outOfSpawn)
+            {
+                SpawnManager.Instance.AddToAvaliable(index);
+            }
+            
             gameObject.SetActive(false);
         }
     }
