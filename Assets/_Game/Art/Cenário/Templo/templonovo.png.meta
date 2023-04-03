@@ -108,12 +108,12 @@ TextureImporter:
       name: templonovo_0
       rect:
         serializedVersion: 2
-        x: 113
-        y: 195
-        width: 351
-        height: 448
+        x: 43
+        y: 193
+        width: 310
+        height: 368
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: templonovo_1
       rect:
         serializedVersion: 2
-        x: 474
-        y: 131
+        x: 451
+        y: 221
         width: 115
         height: 98
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: templonovo_2
       rect:
         serializedVersion: 2
-        x: 11
-        y: 98
-        width: 41
-        height: 81
+        x: 453
+        y: 342
+        width: 115
+        height: 98
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: templonovo_3
       rect:
         serializedVersion: 2
-        x: 55
-        y: 98
-        width: 41
-        height: 81
+        x: 302
+        y: 11
+        width: 101
+        height: 160
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,321 +184,6 @@ TextureImporter:
       bones: []
       spriteID: 3b295170258224541a23b8538adde085
       internalID: -2109842936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_4
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 115
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44d94df6c59f93d46bf87d1fe3850d70
-      internalID: -1283536744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_5
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 115
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7144773566ce9e54dbb390f9678999b7
-      internalID: -668236494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_6
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 115
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a781ff0d8a179a54480e0fe30f123094
-      internalID: -547619154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_7
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 115
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 778a714c0b9f0234591577fdafe1ff73
-      internalID: -223553256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_8
-      rect:
-        serializedVersion: 2
-        x: 302
-        y: 11
-        width: 101
-        height: 160
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38708dbed2f2cae4ba518adbd5f2c796
-      internalID: 956838856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_9
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 96
-        width: 7
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d223ef8f42ad184ab6d939da1914dd9
-      internalID: -1927632059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_10
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 103
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d64bb47a14be79b4b9ddb47c5b5392a5
-      internalID: 2004155042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_11
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 103
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acc20345fcac2f84a8ddd42d5de7939f
-      internalID: -1961969518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_12
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 103
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78cac8d7f7d11fd4390c848b6b887f30
-      internalID: 2108162477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_13
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 8
-        width: 41
-        height: 81
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 079e5b62aa459b440951a081daab053c
-      internalID: -540632713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_14
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 8
-        width: 41
-        height: 81
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be39cd30449c7f342ad4b12e6286da99
-      internalID: -93241073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_15
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 31
-        width: 39
-        height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa860ca448ea4ec4282c525bf8d38f50
-      internalID: -1897794061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_16
-      rect:
-        serializedVersion: 2
-        x: 156
-        y: 31
-        width: 39
-        height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6052fed7e09131847a65bd47dc44d205
-      internalID: -936892682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_17
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 31
-        width: 39
-        height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ffca3ef31e5487b448fb3b6409fc05ad
-      internalID: -781805690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: templonovo_18
-      rect:
-        serializedVersion: 2
-        x: 245
-        y: 31
-        width: 39
-        height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5956abf07672173429fec2ddf2fce46c
-      internalID: -1050744237
       vertices: []
       indices: 
       edges: []
@@ -516,23 +201,8 @@ TextureImporter:
     nameFileIdTable:
       templonovo_0: 1129071827
       templonovo_1: 1844924018
-      templonovo_10: 2004155042
-      templonovo_11: -1961969518
-      templonovo_12: 2108162477
-      templonovo_13: -540632713
-      templonovo_14: -93241073
-      templonovo_15: -1897794061
-      templonovo_16: -936892682
-      templonovo_17: -781805690
-      templonovo_18: -1050744237
       templonovo_2: -73881629
       templonovo_3: -2109842936
-      templonovo_4: -1283536744
-      templonovo_5: -668236494
-      templonovo_6: -547619154
-      templonovo_7: -223553256
-      templonovo_8: 956838856
-      templonovo_9: -1927632059
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
