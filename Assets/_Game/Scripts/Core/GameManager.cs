@@ -36,7 +36,9 @@ public class GameManager : Singleton<GameManager>
     { 
         cutscene = false;
         temploLevel.SetActive(true);
-        cutsceneFinal.gameObject.SetActive(false);
+        //cutsceneFinal.gameObject.SetActive(false);
+
+        GameWin();
     }
 
     private void OnDisable()

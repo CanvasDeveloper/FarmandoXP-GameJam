@@ -19,9 +19,11 @@ public class UIGameplay : MonoBehaviour
 
     [SerializeField] private GameObject pausePanel;            
     [SerializeField] private GameObject gameoverPanel;
+    [SerializeField] private GameObject gamewinPanel;
 
     [SerializeField] private Button firstButtonPause;
     [SerializeField] private Button firstButtonGameOver;
+    [SerializeField] private Button firstButtonGameWin;
 
     private HealthSystem healthSystem;
     private PlayerController playerController;
@@ -41,6 +43,7 @@ public class UIGameplay : MonoBehaviour
 
         GameManager.Instance.OnPauseStatusChange += UpdatePauseMenu;
         GameManager.Instance.OnGameOver += OpenGameoverMenu;
+        GameManager.Instance.OnGameWin += OpenGamewinMenu;
 
         TottemManager.OnTottemRecharged += UpdateColorIcons;
     }
@@ -52,6 +55,7 @@ public class UIGameplay : MonoBehaviour
 
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
+        GameManager.Instance.OnGameWin -= OpenGamewinMenu;
 
         TottemManager.OnTottemRecharged -= UpdateColorIcons;
     }
@@ -91,6 +95,14 @@ public class UIGameplay : MonoBehaviour
 
         firstButtonGameOver.Select();
         gameoverPanel.SetActive(true);
+    }
+
+    private void OpenGamewinMenu()
+    {
+        DisableAllMenus();
+
+        firstButtonGameWin.Select();
+        gamewinPanel.SetActive(true);
     }
 
     private void DisableAllMenus()
