@@ -188,13 +188,21 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_health.IsDie)
-            return;
-
-        if (IsRechargingTottem())
+        {
             _rigidbody2D.velocity = Vector2.zero;
-
-        if (_isDashing)
             return;
+        }
+        
+        if (IsRechargingTottem())
+        {   
+            _rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
+        
+        if (_isDashing)
+        {
+            return;
+        }
 
         _rigidbody2D.velocity = _targetDirection * moveSpeed;
     }
