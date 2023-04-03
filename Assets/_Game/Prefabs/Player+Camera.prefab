@@ -561,8 +561,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 6579058095075330495}
   moveSpeed: 5
+  bumpTime: 1
+  bumpForce: 60
   dashForce: 60
-  dashDelay: 0.16
+  dashDelay: 0.5
   dashDecharge: 0.5
   bulletPrefab: {fileID: -4680066072051886476, guid: cc3e7ae6be7a6d24295d9b3aac6b2a39, type: 3}
   gunPivot: {fileID: 1409434287912679638}
