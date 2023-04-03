@@ -711,6 +711,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1194559553305664962, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
+      propertyPath: m_text
+      value: Musica
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194559553305664962, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_fontSize
       value: 30
       objectReference: {fileID: 0}
@@ -917,6 +921,10 @@ PrefabInstance:
     - target: {fileID: 3472303464107073117, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078660275292793337, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
+      propertyPath: m_text
+      value: Efeitos Sonoros
       objectReference: {fileID: 0}
     - target: {fileID: 4078660275292793337, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_fontSize
@@ -1185,6 +1193,10 @@ PrefabInstance:
     - target: {fileID: 8001300188319021573, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018143474733770075, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
+      propertyPath: m_text
+      value: Sair
       objectReference: {fileID: 0}
     - target: {fileID: 8120492688538153882, guid: d90199d4926fef245973dfc26e13cdbc, type: 3}
       propertyPath: m_SizeDelta.x
