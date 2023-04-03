@@ -31,6 +31,7 @@ public class EnemyFollow : MonoBehaviour
     private IDamageable health;
 
     private bool _isStunned;
+    private int _index;
 
     // Start is called before the first frame update
     void Awake()
@@ -41,8 +42,6 @@ public class EnemyFollow : MonoBehaviour
         playerHealth = player.GetComponent<HealthSystem>();
 
         health = GetComponent<IDamageable>();
-
-        target = player.transform;
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -84,9 +83,10 @@ public class EnemyFollow : MonoBehaviour
     void Update()
     {
         if (_isStunned)
-            return; 
+            return;
 
-        //if()
+        if (target)
+            return;
 
         agent.SetDestination(target.position);
         currentVelocity = agent.velocity;
@@ -113,5 +113,21 @@ public class EnemyFollow : MonoBehaviour
     {
         anim.SetFloat(DirectionXParam, currentVelocity.x);
         anim.SetFloat(DirectionYParam, currentVelocity.y);
+    }
+
+    public void SetSpawnIndex(int index)
+    {
+        _index = index;
+    }
+
+    public void Visible()
+    {
+        target = player.transform;
+    }
+
+    public void Invisible()
+    {
+        target = null;
+        EnemySpawnManager.Instance.AddToAvaliable(this, _index);
     }
 }
