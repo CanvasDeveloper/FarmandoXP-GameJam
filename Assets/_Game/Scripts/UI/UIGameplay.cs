@@ -17,6 +17,8 @@ public class UIGameplay : MonoBehaviour
 
     [SerializeField] private List<TotemImage> totenImage;
 
+    [SerializeField] private GameObject hud;
+    
     [SerializeField] private GameObject pausePanel;            
     [SerializeField] private GameObject gameoverPanel;
     [SerializeField] private GameObject gamewinPanel;
@@ -45,7 +47,7 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnGameOver += OpenGameoverMenu;
         GameManager.Instance.OnGameWin += OpenGamewinMenu;
 
-        GameManager.Instance.OnActiveCutScene += DisableAllMenus;
+        GameManager.Instance.OnActiveCutScene += DisableHUD;
 
         TottemManager.OnTottemRecharged += UpdateColorIcons;
     }
@@ -59,7 +61,7 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
         GameManager.Instance.OnGameWin -= OpenGamewinMenu;
 
-        GameManager.Instance.OnActiveCutScene -= DisableAllMenus;
+        GameManager.Instance.OnActiveCutScene -= DisableHUD;
 
         TottemManager.OnTottemRecharged -= UpdateColorIcons;
     }
@@ -113,5 +115,11 @@ public class UIGameplay : MonoBehaviour
     {
         pausePanel.SetActive(false);
         gameoverPanel.SetActive(false);
+    }
+
+    private void DisableHUD()
+    {
+        DisableAllMenus();
+        hud.SetActive(false);
     }
 }

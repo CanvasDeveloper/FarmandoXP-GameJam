@@ -734,6 +734,7 @@ MonoBehaviour:
     image: {fileID: 5415439042199040689}
   - color: 2
     image: {fileID: 4738720031140859865}
+  hud: {fileID: 1827575786690350316}
   pausePanel: {fileID: 8849387895161189841}
   gameoverPanel: {fileID: 5570352115289391345}
   gamewinPanel: {fileID: 8505752975165132000}
