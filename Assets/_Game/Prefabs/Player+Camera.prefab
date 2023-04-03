@@ -561,13 +561,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 6579058095075330495}
   moveSpeed: 5
+  bumpTime: 1
+  bumpForce: 60
   dashForce: 60
   dashDelay: 0.16
   dashDecharge: 0.5
   bulletPrefab: {fileID: -4680066072051886476, guid: cc3e7ae6be7a6d24295d9b3aac6b2a39, type: 3}
   gunPivot: {fileID: 1409434287912679638}
   bulletSpeed: 8
-  waitForAnimation: 0.2
+  waitForAnimation: 0
   maxBullets: 10
   requiredToShoot: 1
   delayToReload: 0.1
@@ -590,7 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b8fe6bba177944a8e25100f58e1c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 3
+  <MaxHealth>k__BackingField: 10
   destroyOnDie: 0
   disableOnDie: 1
 --- !u!114 &926122408802446250

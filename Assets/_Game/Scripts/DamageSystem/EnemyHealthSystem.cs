@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthSystem : IDamageable
+public class EnemyHealthSystem : MonoBehaviour, IDamageable
 {
     public float CurrentHealth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public float MaxHealth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
