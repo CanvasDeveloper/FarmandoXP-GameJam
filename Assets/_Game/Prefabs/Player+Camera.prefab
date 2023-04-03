@@ -580,6 +580,10 @@ MonoBehaviour:
   gunDownLocation: {fileID: 1552521749780478918}
   gunUpLocation: {fileID: 9070696203510201397}
   gunSideLocation: {fileID: 1563900388990980159}
+  _spriteRenderer: {fileID: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  blinkColor: {r: 1, g: 0.7028302, b: 0.7028302, a: 0.5019608}
+  blinkTime: 0.3
 --- !u!114 &6579058094610347721
 MonoBehaviour:
   m_ObjectHideFlags: 0

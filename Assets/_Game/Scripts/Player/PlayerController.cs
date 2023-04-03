@@ -64,10 +64,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform gunUpLocation;
     [SerializeField] private Transform gunSideLocation;
 
+    [Header("Blink")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color blinkColor ;
+    [SerializeField] private float blinkTime = 0.2f;
+
     private bool _isCanShoot = true;
 
     private bool _isDashing = false;
-    private bool _isBumping = false;
+   
     private bool _isTriggeredMovementAudio = false;
     
     private Vector2 _targetDirection;
@@ -91,6 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         _inputReference = GetComponent<InputReference>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _health = GetComponent<IDamageable>();
     }
@@ -122,9 +129,6 @@ public class PlayerController : MonoBehaviour
         PauseInputTrigger();
 
         if (GameManager.Instance && GameManager.Instance.Paused)
-            return;
-
-        if (_isBumping)
             return;
 
         _targetDirection = _inputReference.Movement;
@@ -415,20 +419,35 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeToTakeDamageAnimation(Vector3 value)
     {
-        _isBumping = true;
-
         playerAnimator.SetTrigger(TakeDamageParam);
 
-        _rigidbody2D.AddForce( -(Vector2)value * bumpForce);
-
-        StartCoroutine(WaitForBumping());
+        StopCoroutine(Blink());
+        StartCoroutine(Blink());
     }
 
-    private IEnumerator WaitForBumping()
+    private IEnumerator Blink()
     {
-        yield return new WaitForSeconds(bumpTime);
+        _spriteRenderer.color = blinkColor;
 
-        _isBumping = false;
+        yield return new WaitForSeconds(blinkTime);
+
+        _spriteRenderer.color = defaultColor;
+
+        yield return new WaitForSeconds(blinkTime);
+
+        _spriteRenderer.color = blinkColor;
+
+        yield return new WaitForSeconds(blinkTime);
+
+        _spriteRenderer.color = defaultColor;
+
+        yield return new WaitForSeconds(blinkTime);
+
+        _spriteRenderer.color = blinkColor;
+
+        yield return new WaitForSeconds(blinkTime);
+
+        _spriteRenderer.color = defaultColor;
     }
 
     private void UpdateAnimator()
