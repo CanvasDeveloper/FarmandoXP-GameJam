@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private float moveSpeed = 5f;
 
+    [Header("Bump Time")]
+    [SerializeField] private float bumpTime = 1f;
+    [SerializeField] private float bumpForce = 60f;
+
     [Header("Dash")]
     [SerializeField] private float dashForce = 5f;
     [SerializeField] private float dashDelay = 1f;
@@ -61,7 +65,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform gunSideLocation;
 
     private bool _isCanShoot = true;
+
     private bool _isDashing = false;
+    private bool _isBumping = false;
     private bool _isTriggeredMovementAudio = false;
     
     private Vector2 _targetDirection;
@@ -118,6 +124,9 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance && GameManager.Instance.Paused)
             return;
 
+        if (_isBumping)
+            return;
+
         _targetDirection = _inputReference.Movement;
 
         TriggerOnWalkAudio();
@@ -139,6 +148,28 @@ public class PlayerController : MonoBehaviour
         UpdatePlayerScale();
         DashInpuTrigger();
         UpdateGunRotation();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_health.IsDie)
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
+
+        if (IsRechargingTottem())
+        {
+            _rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
+
+        if (_isDashing)
+        {
+            return;
+        }
+
+        _rigidbody2D.velocity = _targetDirection * moveSpeed;
     }
 
     private void RechargingInputTrigger()
@@ -183,28 +214,6 @@ public class PlayerController : MonoBehaviour
 
             hasStartTriggerAudio = false;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (_health.IsDie)
-        {
-            _rigidbody2D.velocity = Vector2.zero;
-            return;
-        }
-        
-        if (IsRechargingTottem())
-        {   
-            _rigidbody2D.velocity = Vector2.zero;
-            return;
-        }
-        
-        if (_isDashing)
-        {
-            return;
-        }
-
-        _rigidbody2D.velocity = _targetDirection * moveSpeed;
     }
 
     private void TriggerOnWalkAudio()
@@ -403,7 +412,20 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeToTakeDamageAnimation(Vector3 value)
     {
+        _isBumping = true;
+
         playerAnimator.SetTrigger(TakeDamageParam);
+
+        _rigidbody2D.AddForce( -(Vector2)value * bumpForce);
+
+        StartCoroutine(WaitForBumping());
+    }
+
+    private IEnumerator WaitForBumping()
+    {
+        yield return new WaitForSeconds(bumpTime);
+
+        _isBumping = false;
     }
 
     private void UpdateAnimator()
