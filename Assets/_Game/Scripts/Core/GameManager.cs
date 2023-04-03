@@ -6,6 +6,9 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action<bool> OnPauseStatusChange;
     public event Action OnGameOver;
+
+    public event Action OnActiveCutScene;
+    
     public event Action OnGameWin;
 
     public PlayableDirector cutsceneFinal;
@@ -29,6 +32,9 @@ public class GameManager : Singleton<GameManager>
     {
         cutsceneFinal.Play();
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Templo/Cutscene", transform.position);
+
+        OnActiveCutScene?.Invoke();
+
         cutscene = true;
         temploLevel.SetActive(false);
     }
