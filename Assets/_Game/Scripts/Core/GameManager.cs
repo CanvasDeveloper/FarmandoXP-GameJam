@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     private void ActiveCutscene()
     {
         cutsceneFinal.Play();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Templo/Cutscene", transform.position);
         cutscene = true;
         temploLevel.SetActive(false);
     }
