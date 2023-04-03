@@ -123,6 +123,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.cutscene)
+            return;
+
         if (_health.IsDie)
             return;
 
