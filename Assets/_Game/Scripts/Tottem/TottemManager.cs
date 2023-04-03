@@ -15,8 +15,6 @@ public class TottemProgress
 
 public class TottemManager : Singleton<TottemManager>
 {
-    public event Action<ColorTottemEnum> OnCompletedTottem;
-
     public Dictionary<ColorTottemEnum, bool> tottemProgress;
     public List<TottemProgress> listTottemProgress;
 
@@ -51,8 +49,6 @@ public class TottemManager : Singleton<TottemManager>
             if(tottem == item.tottemColor)
             {
                 item.isCompleted = true;
-                OnCompletedTottem?.Invoke(item.tottemColor);
-
                 Debug.LogFormat($"<color={item.tottemColor}>{item.tottemColor.ToString().ToUpper()}!!!!</color>");
             }
         }

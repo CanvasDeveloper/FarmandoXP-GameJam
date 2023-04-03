@@ -42,7 +42,7 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnPauseStatusChange += UpdatePauseMenu;
         GameManager.Instance.OnGameOver += OpenGameoverMenu;
 
-        TottemManager.Instance.OnCompletedTottem += UpdateColorIcons;
+        TottemManager.OnTottemRecharged += UpdateColorIcons;
     }
 
     private void OnDestroy()
@@ -53,7 +53,7 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
 
-        TottemManager.Instance.OnCompletedTottem -= UpdateColorIcons;
+        TottemManager.OnTottemRecharged -= UpdateColorIcons;
     }
 
     private void UpdateColorIcons(ColorTottemEnum colorEnum)
