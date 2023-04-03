@@ -11,12 +11,14 @@ public class TesteColliderTottem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!controller.HasBullets())
-            return;
-
         if(collision.tag == "RechargeTottem")
         {
             var tottem = collision.transform.parent.GetComponent<Tottem>();
+
+            tottem.PlayerEnter();
+
+            if (!controller.HasBullets())
+                return;
 
             //tottem.TriggerPlayerRecharged(controller, true); //OnPlayerRecharged?.Invoke(true);
             controller.SetTottem(tottem);
@@ -31,6 +33,8 @@ public class TesteColliderTottem : MonoBehaviour
 
             tottem.TriggerPlayerRecharged(controller, false); //OnPlayerRecharged?.Invoke(false);
             controller.SetTottem(null);
+
+            tottem.PlayerExit();
         }
     }
 
