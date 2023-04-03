@@ -408,6 +408,8 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeToDieAnimation(IDamageable value)
     {
+        GameManager.Instance.GameOver();
+
         playerAnimator.SetBool(IsDieParam, true);
     }
 
