@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnCollectablesManager : Singleton<SpawnCollectablesManager>
+public class SpawnManager : Singleton<SpawnManager>
 {
     private ObjectPooler pooler;
 
@@ -14,7 +14,7 @@ public class SpawnCollectablesManager : Singleton<SpawnCollectablesManager>
     {
         base.Awake();
 
-        pooler = GetComponent<ObjectPooler>();
+        pooler = FindObjectOfType<ObjectPooler>();
     }
 
     private void Start()
