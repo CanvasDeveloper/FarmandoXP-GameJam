@@ -45,6 +45,8 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnGameOver += OpenGameoverMenu;
         GameManager.Instance.OnGameWin += OpenGamewinMenu;
 
+        GameManager.Instance.OnActiveCutScene += DisableAllMenus;
+
         TottemManager.OnTottemRecharged += UpdateColorIcons;
     }
 
@@ -56,6 +58,8 @@ public class UIGameplay : MonoBehaviour
         GameManager.Instance.OnPauseStatusChange -= UpdatePauseMenu;
         GameManager.Instance.OnGameOver -= OpenGameoverMenu;
         GameManager.Instance.OnGameWin -= OpenGamewinMenu;
+
+        GameManager.Instance.OnActiveCutScene -= DisableAllMenus;
 
         TottemManager.OnTottemRecharged -= UpdateColorIcons;
     }
