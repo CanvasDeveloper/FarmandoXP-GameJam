@@ -323,6 +323,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(IE_ResetDash());
 
             playerAnimator.SetTrigger(DashParam);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Dash", transform.position);
         }
     }
 
