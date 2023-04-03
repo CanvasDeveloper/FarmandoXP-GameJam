@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3449238917725792218}
   - component: {fileID: 3449238917725792221}
   - component: {fileID: 3449238917725792219}
+  - component: {fileID: 781563870783181292}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -197,6 +198,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customPivot: {fileID: 0}
   offsetZposition: 0
+--- !u!114 &781563870783181292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449238917725792223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc8304a36cbda49bf5aac848766d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3449238917912038903
 GameObject:
   m_ObjectHideFlags: 0

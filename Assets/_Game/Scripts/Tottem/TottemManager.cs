@@ -15,11 +15,11 @@ public class TottemProgress
 
 public class TottemManager : Singleton<TottemManager>
 {
-    public Dictionary<ColorTottemEnum, bool> tottemProgress;
     public List<TottemProgress> listTottemProgress;
 
     #region EVENTS
     public static Action<ColorTottemEnum> OnTottemRecharged; // quando todos slots foram carregados
+    public static Action OnAllTotemsComplete; // todos totens completos
     #endregion EVENTS
 
     private void Start()
@@ -34,15 +34,15 @@ public class TottemManager : Singleton<TottemManager>
 
     private void Subscribe()
     {
-        OnTottemRecharged += Tottem;
+        OnTottemRecharged += SetTottemCompleted;
     }
 
     private void Unsubscribe()
     {
-        OnTottemRecharged -= Tottem;
+        OnTottemRecharged -= SetTottemCompleted;
     }
 
-    private void Tottem(ColorTottemEnum tottem)
+    private void SetTottemCompleted(ColorTottemEnum tottem)
     {
         foreach (var item in listTottemProgress)
         {
@@ -50,6 +50,24 @@ public class TottemManager : Singleton<TottemManager>
             {
                 item.isCompleted = true;
                 Debug.LogFormat($"<color={item.tottemColor}>{item.tottemColor.ToString().ToUpper()}!!!!</color>");
+            }
+        }
+        CheckIsAllTotems();
+    }
+
+    private void CheckIsAllTotems()
+    {
+        int amountTotemCompleted = 0;
+
+        foreach (var tot in listTottemProgress)
+        {
+            if (tot.isCompleted)
+                amountTotemCompleted++;
+
+            if (amountTotemCompleted >= listTottemProgress.Count)
+            {
+                OnAllTotemsComplete?.Invoke();
+                Debug.Log("<color=white>Todos Tottems completo</color>");
             }
         }
     }
