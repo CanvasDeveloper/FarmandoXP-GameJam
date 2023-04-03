@@ -572,7 +572,7 @@ MonoBehaviour:
   waitForAnimation: 0
   maxBullets: 10
   requiredToShoot: 1
-  delayToReload: 0.1
+  delayToReload: 1
   percent: 0.025
   percentToRemoveBullet: 0.019
   currentBullets: 1000
