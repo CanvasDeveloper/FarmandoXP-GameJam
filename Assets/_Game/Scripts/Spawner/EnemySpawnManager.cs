@@ -63,7 +63,7 @@ public class EnemySpawnManager : Singleton<EnemySpawnManager>
     {
         spawnPoints[index].hasItem = false;
 
-        enemyFollow.transform.position = spawnPoints[index].transform.position;
+        enemyFollow.SetTarget(spawnPoints[index].transform);
 
         //Spawn();
     }
