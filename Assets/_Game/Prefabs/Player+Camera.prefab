@@ -563,6 +563,7 @@ MonoBehaviour:
   moveSpeed: 5
   dashForce: 60
   dashDelay: 0.16
+  dashDecharge: 0.5
   bulletPrefab: {fileID: -4680066072051886476, guid: cc3e7ae6be7a6d24295d9b3aac6b2a39, type: 3}
   gunPivot: {fileID: 1409434287912679638}
   bulletSpeed: 8
@@ -570,9 +571,10 @@ MonoBehaviour:
   maxBullets: 10
   requiredToShoot: 1
   delayToReload: 0.1
-  percent: 0.05
-  currentBullets: 0
-  removingBulletsDelay: 0.25
+  percent: 0.025
+  percentToRemoveBullet: 0.019
+  currentBullets: 1000
+  removingBulletsDelay: 0.125
   gunDownLocation: {fileID: 1552521749780478918}
   gunUpLocation: {fileID: 9070696203510201397}
   gunSideLocation: {fileID: 1563900388990980159}
@@ -758,7 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customPivot: {fileID: 4540578034028608491}
-  offsetZposition: 0
+  offsetZposition: -0.1
 --- !u!114 &3182997233592741114
 MonoBehaviour:
   m_ObjectHideFlags: 0

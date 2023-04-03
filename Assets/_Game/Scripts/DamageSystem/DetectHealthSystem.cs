@@ -47,7 +47,7 @@ public class DetectHealthSystem : MonoBehaviour
         if (type != DetectionType.Trigger)
             return;
 
-        if (collision.gameObject.TryGetComponent(out IDamageable damageable) && !collision.gameObject.CompareTag("Tree"))
+        if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
             damageable.TakeDamage(transform.position, damage);
             damageable.Heal(heal);
