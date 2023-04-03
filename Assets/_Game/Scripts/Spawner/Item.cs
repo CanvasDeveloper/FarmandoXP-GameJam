@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
 
     public void SetSpawnIndex(int i)
     {
+        outOfSpawn = false;
         index = i;
     }
 
