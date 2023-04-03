@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 2
+  outOfSpawn: 0
 --- !u!58 &1215725246858870173
 CircleCollider2D:
   m_ObjectHideFlags: 0
