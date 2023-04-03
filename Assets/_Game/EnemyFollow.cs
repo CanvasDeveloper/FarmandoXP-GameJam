@@ -32,6 +32,7 @@ public class EnemyFollow : MonoBehaviour
 
     private bool _isStunned;
     private int _index;
+    private Vector2 _startPosition;
 
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +46,8 @@ public class EnemyFollow : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        _startPosition = transform.position;
     }
 
     private void OnEnable()
@@ -85,7 +88,7 @@ public class EnemyFollow : MonoBehaviour
         if (_isStunned)
             return;
 
-        if (target)
+        if (!target)
             return;
 
         agent.SetDestination(target.position);
@@ -122,12 +125,17 @@ public class EnemyFollow : MonoBehaviour
 
     public void Visible()
     {
-        target = player.transform;
+        SetTarget(player.transform);
     }
 
     public void Invisible()
     {
         target = null;
         EnemySpawnManager.Instance.AddToAvaliable(this, _index);
+    }
+
+    public void SetTarget(Transform transform)
+    {
+        target = transform;
     }
 }
