@@ -57,6 +57,9 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{81f1faba-3c18-45e7-87c8-ff647a4b2a32}">
+		<property name="maxVoices">
+			<value>3</value>
+		</property>
 		<property name="minimumDistance">
 			<value>7.20000029</value>
 		</property>
