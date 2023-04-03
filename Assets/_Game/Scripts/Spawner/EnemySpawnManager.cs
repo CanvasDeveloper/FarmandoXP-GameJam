@@ -1,9 +1,41 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnManager : SpawnManager
+public class EnemySpawnManager : MonoBehaviour
 {
-    protected override void Spawn()
+    protected ObjectPooler pooler;
+
+    [SerializeField] protected string spawnablesTag = "Enemy";
+
+    [SerializeField] protected SpawnPoint[] spawnPoints;
+    [SerializeField] private int initialAmount = 5;
+
+    protected void Awake() //override void Awake()
+    {
+        //base.Awake();
+
+        pooler = FindObjectOfType<ObjectPooler>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartSpawn());
+    }
+
+    public IEnumerator StartSpawn()
+    {
+        yield return new WaitForEndOfFrame();
+
+        for (int i = 0; i < initialAmount; i++)
+        {
+            Spawn();
+            Debug.Log("Alo");
+        }
+    }
+
+    [ContextMenu("TestSpawn")]
+    protected virtual void Spawn()
     {
         var avaliableSpawners = new List<SpawnPoint>();
 
@@ -25,5 +57,12 @@ public class EnemySpawnManager : SpawnManager
         var go = pooler.SpawnFromPool(spawnablesTag, targetPoint.transform.position, Quaternion.identity);
 
         go.GetComponent<EnemyFollow>(); //.SetSpawnIndex(index);
+    }
+
+    public void AddToAvaliable(int index)
+    {
+        spawnPoints[index].hasItem = false;
+
+        Spawn();
     }
 }
