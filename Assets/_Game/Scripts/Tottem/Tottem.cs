@@ -33,6 +33,8 @@ public class Tottem : MonoBehaviour
 
     [SerializeField] private float startYValue = 1;
 
+    private UiDetectGamepad ui;
+
     #endregion PRIVATE VARIABLES
 
     #region EVENTS
@@ -47,6 +49,8 @@ public class Tottem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ui = GetComponentInChildren<UiDetectGamepad>();
+
         IdleSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Totem/Totem Aura Dark");
         IdleSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(IdleSound, transform, true);
@@ -197,19 +201,19 @@ public class Tottem : MonoBehaviour
         OnPlayerRecharged?.Invoke(value);
         
     }
-}
-/*if (!hasStartTriggerAudio)
-{
-    hasStartTriggerAudio = true;
 
-    instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Fada/Cast Start");
-    instance.start();
-}
-if (!hasEndTriggerAudio)
-{
-    hasEndTriggerAudio = true;
+    public void PlayerEnter()
+    {
+        if (IsSubTotem() && !IsValidTotem())
+        {
+            return;
+        }
 
-    instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-    instance.release();
-    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Fada/Cast End", transform.position);
-}*/
+        ui.Active();
+    }
+
+    public void PlayerExit()
+    {
+        ui.Desactive();
+    }
+}

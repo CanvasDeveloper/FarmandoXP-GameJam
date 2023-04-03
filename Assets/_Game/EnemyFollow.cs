@@ -8,6 +8,7 @@ public class EnemyFollow : MonoBehaviour
     private static readonly int DirectionXParam = Animator.StringToHash("directionX");
     private static readonly int DirectionYParam = Animator.StringToHash("directionY");
     private static readonly int AttackParam = Animator.StringToHash("attack");
+    private static readonly int isTakeDamage = Animator.StringToHash("isTakeDamage");
 
     public Vector3 currentVelocity;
     public NavMeshAgent agent;
@@ -16,7 +17,7 @@ public class EnemyFollow : MonoBehaviour
     public HealthSystem playerHealth;
     public Transform target;
 
-    [SerializeField] private float damage = 1;
+    [SerializeField] BoxCollider2D colDamage; // collider que dá dano no player
     [SerializeField] private float timeToAttack = 1;
 
     [SerializeField] private float stunnedTime = 2f;
@@ -32,7 +33,7 @@ public class EnemyFollow : MonoBehaviour
     private bool _isStunned;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
 
@@ -67,11 +68,15 @@ public class EnemyFollow : MonoBehaviour
     {
         _isStunned = true;
         agent.isStopped = true;
+        colDamage.enabled = false;
+        anim.SetBool(isTakeDamage, _isStunned);
 
         yield return new WaitForSeconds(stunnedTime);
 
         agent.isStopped = false;
         _isStunned = false;
+        colDamage.enabled = true;
+        anim.SetBool(isTakeDamage, _isStunned);
     }
 
 
@@ -88,23 +93,6 @@ public class EnemyFollow : MonoBehaviour
         
         if (currentVelocity == Vector3.zero)
             return;
-
-        if (Vector2.Distance(transform.position, target.position) < agent.stoppingDistance)
-        {
-            //perto da arvore
-            if (!hasHitted)
-            {
-                anim.SetTrigger(AttackParam);
-
-                playerHealth.TakeDamage(transform.position, damage);
-
-                hasHitted = true;
-
-                StartCoroutine(WaitForHit());
-            }
-
-            return;
-        }
 
         UpdatePlayerScale();
         UpdateAnimator();

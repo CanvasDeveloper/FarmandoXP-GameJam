@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,17 +20,17 @@ public class SpawnManager : Singleton<SpawnManager>
 
     private void Start()
     {
-        StartSpawn();
+        StartCoroutine(StartSpawn());
     }
 
-    public void StartSpawn()
+    public IEnumerator StartSpawn()
     {
-        var spawn = 0;
+        yield return new WaitForEndOfFrame();
 
-        while(spawn < initialAmount)
+        for(int i = 0; i < initialAmount; i++)
         {
-            spawn++;
             Spawn();
+            Debug.Log("Alo");
         }
     }
 
@@ -61,5 +62,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void AddToAvaliable(int index)
     {
         spawnPoints[index].hasItem = false;
+
+        Spawn();
     }
 }
