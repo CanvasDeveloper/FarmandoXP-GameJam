@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Bullets Recover")]
     [SerializeField] private float percent = 0.2f;
+    [SerializeField] private float percentToRemoveBullet = 0.2f;
 
     [SerializeField] private float currentBullets = 0;
     [SerializeField] private float removingBulletsDelay = 0.5f;
@@ -338,7 +339,7 @@ public class PlayerController : MonoBehaviour
 
         if (_timeRemovingBullets > removingBulletsDelay)
         {
-            RemoveBullets(requiredToShoot);
+            RemoveBullets(percentToRemoveBullet * maxBullets); //requiredToShoot
             _timeRemovingBullets = 0;
         }
     }
